@@ -1,0 +1,31 @@
+<div class = "container" >
+<mat-card class = "container">
+    <mat-card-title>Sign In</mat-card-title>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
+        
+            <div>
+                <label for ="email"><b>Email</b></label>
+                <input autocomplete="off" formControlName="email" type="text" matInput placeholder="Email">
+                <label for = "password"><b>Password</b></label>
+                <input autocomplete="off" formControlName="password" type="password" matInput placeholder="Password">
+
+        <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+            <span>{{ firebaseErrorMessage }}</span>
+        </div>
+        <div class = "container2">
+        <button mat-raised-button color="primary" class = "child">Login</button>
+        </div>
+        <div>
+        <p class = "sign"><a routerLink = "/signup" routerLinkActive = "active">Don't have an Account? Sign Up here!</a></p>
+        </div>
+        <div>
+            <p class = "fp"><a routerLink = "/forgot-password" routerLinkActive = "active">Forgot Password?</a></p>
+        </div>
+    </div>
+    </form>
+
+</mat-card>
+
+<div class="progressIndicator" [style.display]="isProgressVisible ? 'inline' : 'none' ">
+    <mat-progress-spinner class=" example-margin" color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>

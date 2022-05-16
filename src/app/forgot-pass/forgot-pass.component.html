@@ -1,0 +1,28 @@
+<div class ="container">
+<mat-card class = "size">
+    <form [formGroup]="forgotPasswordForm" (ngSubmit)="retrievePassword()" type="">
+        <img mat-card-image src="../../assets/icons8-forgot-password-64.png" alt="forgotpass" class ="isize">
+        <p>A password-reset email will be sent to...</p>
+        <p>
+                <label for = "email">Email</label>
+                <input autocomplete="off" formControlName="email" type="text"  placeholder="ex: y@mail.com">
+        </p>
+
+        <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+            <span>{{ firebaseErrorMessage }}</span>
+        </div>
+
+        <button mat-raised-button color="primary" [disabled]="mailSent" class = "align1">Reset my password</button>
+        <div *ngIf="mailSent">
+            <p>An email has been sent!</p>
+            <button mat-raised-button color="primary" routerLink="/home">
+                <mat-icon>home</mat-icon>
+                <span>Return Home</span>
+            </button>
+        </div>
+    </form>
+</mat-card>
+</div>
+<div class="progressIndicator" [style.display]="isProgressVisible ? 'inline' : 'none' ">
+    <mat-progress-spinner class=" example-margin" color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>

@@ -1,0 +1,30 @@
+<div class = "container">
+
+<mat-card class = "size">
+    <div mat-card-avatar class="image"></div>
+    <img mat-card-image src="../../assets/sending.png" alt="mailSent" class ="isize">
+    <p>Verify your email address</p>
+    <p>To confirm your email address, <b>please click on the link</b> in the email we sent you.</p>
+    <p>A verification email will be sent to <span>{{ email }}</span>.</p>
+
+    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <span>{{ firebaseErrorMessage }}</span>
+    </div>
+
+    <button mat-raised-button color="primary" [disabled]="mailSent" (click)="resendVerificationEmail()" class = "align">Resend verification email</button>
+    <br>
+    <br>
+    <div *ngIf="mailSent">
+        <p>An email has been sent!</p>
+        
+        <button mat-raised-button color="primary" routerLink="/home" class = "align1">
+            <mat-icon>home</mat-icon>
+            <span>Return Home</span>
+        </button>
+        </div>
+    <br>
+</mat-card>
+</div>
+<div class="progressIndicator" [style.display]="isProgressVisible ? 'inline' : 'none' ">
+    <mat-progress-spinner class=" example-margin" color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>

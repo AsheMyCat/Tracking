@@ -1,0 +1,125 @@
+input[type=text], input[type=number], input[type=select], input[type=password] {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0 8px 2px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  mat-card {
+    width: 35%;
+    height: 40%;
+    top: 20%;
+    left: 31%;
+    margin-top: 25px;
+    margin-bottom: 100px;
+    bottom: 20%;
+    object-position: center;
+    box-shadow: #50515c;
+    background-color: rgb(215, 247, 236);
+  
+  }
+  
+  .tt{
+    text-align: center;
+  }
+  
+  p {
+      font-size: 17px;
+      margin: 0 0 3px;
+  }
+  mat-typography p {
+    margin: 0 0 3px;
+  }
+  
+  .space {
+      margin-left: 30%;
+      margin-right: 30%;
+      margin-top: 5%;
+  }
+  
+  
+  .label {
+    font-size: 17px;
+    vertical-align: center;
+    line-height: 10px;
+  }
+  
+  .sel {
+    width: 98%;
+    padding: 10px;
+    margin: 5px 0 8px 2px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  .style{
+    background-color: transparent;
+    border: transparent;
+    border-style: none;
+    box-shadow: none;
+    object-position: center;
+    margin-left: 30%;
+    margin-right: 20%;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .form-control.ng-touched.ng-invalid {
+    border: 1px solid red;
+  }
+  
+  .form-control.ng-touched.ng-valid {
+    border: 1px solid green;
+  }
+  
+  .sel.ng-touched.ng-invalid {
+    border: 1px solid red;
+  }
+  
+  .sel.ng-touched.ng-valid {
+    border: 1px solid green;
+  }
+  
+  .container {
+    padding: 22px;
+  }
+  
+  .container2 {
+    padding: 14px;
+  }
+  
+  .child { /*button*/
+    width: 40%;
+    height: 35px;
+    /* Center vertically */
+    position: absolute;
+    top: 94%;
+    left: 3.5%;
+    margin-top: -25px; /* Half this element's height */
+  }
+  
+  .child2 {
+    width: 40%;
+    height: 35px;
+    /* Center vertically */
+    position: absolute;
+    top: 94%;
+    left: 55.5%;
+    margin-top: -25px; /* Half this element's height */
+  }
+  
+  .fp{
+    text-decoration: none;
+    font-size: 17px;
+    /* Center vertically */
+    color:rgb(51, 87, 245);
+    position: absolute;
+    top: 100%;
+    left: 25%;
+    margin-top: -25px; /* Half this element's height */
+  }

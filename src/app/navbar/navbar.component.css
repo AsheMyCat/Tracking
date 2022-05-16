@@ -1,0 +1,9 @@
+.spacer{
+    flex: 1 1 auto;
+}
+a {
+    text-decoration: none;
+}
+p {
+    font-size: 50px;
+}

@@ -1,0 +1,40 @@
+p {
+    text-align: center;
+}
+
+.container {
+    padding: auto;
+}
+
+mat-card {
+    box-shadow: inset;
+    background-color: rgb(191, 245, 227);
+    align-content: center;
+    
+}
+
+.size{
+    width:30%;
+    height: 30%;
+    margin-top: 8%;
+    margin-left: 34%;
+    margin-right: 30%;
+}
+
+.align{
+    margin-left: 25%;
+}
+.align1{
+    margin-left: 35%;
+}
+
+.isize{
+    height:25%;
+    width: 20%;
+    padding-left: 42%;
+    padding-top: 0%;
+    margin-top: -10%;
+    margin-bottom: -2%;
+
+}
+  

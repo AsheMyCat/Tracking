@@ -1,0 +1,42 @@
+<div class = "container">
+<mat-card class="card">
+<mat-list *ngIf="( user | async)">
+    <mat-card-title>Welcome {{ (user | async)?.First_Name}}!</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-list-item>Account Type: {{ (user | async)?.accountType }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Display Name: {{ (user | async)?.displayName }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Surname: {{ (user | async)?.Surname}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>First Name: {{ (user | async)?.First_Name}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Middle Name: {{ (user | async)?.Middle_Name}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Suffx: {{ (user | async)?.Suffix}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Age: {{ (user | async)?.Age }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Birthday: {{ (user | async)?.Birthday }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Birthplace: {{ (user | async)?.Birthplace }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Address: {{ (user | async)?.Address }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Contact Number: {{ (user | async)?.Contact_Number }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Religion: {{ (user | async)?.Religion }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Sex: {{ (user| async)?.Sex }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Civil Status: {{ (user | async)?.Civil_Status }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Email Address: {{ (user | async)?.Email_Address }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Email Verification Status: {{ (afAuth.user | async)?.emailVerified }}</mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
+</mat-card>
+<br>
+<br>
+</div>

@@ -1,0 +1,38 @@
+#map{
+    height: 70vh;
+    width: 200vh;
+    margin: auto;
+    margin-top: 1%;
+    border: 2px;
+    border-style: double;
+
+}
+
+.con{
+    margin-top: 2%;
+    position: center;
+    margin-left: 36%;
+}
+
+input[type=text] {
+    width: 35%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .button {
+      width: 10%;
+      color: rgb(0, 0, 0);
+      border: 1px solid slateblue;
+      height: 37px;
+      margin-left: 2%;
+  }
+
+
+
+
+

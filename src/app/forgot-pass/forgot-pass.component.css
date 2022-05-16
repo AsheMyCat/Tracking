@@ -1,0 +1,42 @@
+mat-card {
+    box-shadow: inset;
+    border-color: blue;
+    background-color: rgb(223, 238, 252);
+    
+}
+.size{
+    width:25%;
+    height: 30%;
+    margin-top: 10%;
+    margin-left: 36%;
+    margin-right: 30%;
+}
+.container {
+    padding: auto;
+    border-radius: 20px;
+   
+}
+.align1{
+    margin-left: 29%;
+    size-adjust: auto;
+}
+label{
+    padding: 3px;
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .isize{
+    height:25%;
+    width: 20%;
+    padding-left: 44%;
+    padding-top: 2%;
+    margin-top: 0%;
+    margin-bottom: 3%;
+}
+  

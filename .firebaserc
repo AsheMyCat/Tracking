@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mydemo1235": {
+      "hosting": {
+        "Tracking": [
+          "cavpwdtracking"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mydemo1235"
+  }
+}

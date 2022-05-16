@@ -1,0 +1,27 @@
+<mat-toolbar *ngIf="!(afAuth.user | async)">
+    <span><mat-icon class = "spacer">map</mat-icon>Practice</span>
+
+    <div class = "spacer"></div>
+
+    <button mat-button><a routerLink = "home" routerLinkActive = "active">Home</a></button>
+    <button mat-button><a routerLink = "about" routerLinkActive = "active">About</a></button>
+    <button mat-button><a routerLink = "hotlines" routerLinkActive = "active">Hotlines</a></button>
+    <button mat-raised-button><a routerLink = "login" routerLinkActive = "active">Login</a></button>
+
+</mat-toolbar>
+
+<mat-toolbar *ngIf="(afAuth.user | async)">
+    <span><mat-icon class = "spacer">map</mat-icon>Practice</span>
+
+    <div class = "spacer"></div>
+
+    <button mat-button><a routerLink = "home" routerLinkActive = "active">Home</a></button>
+    <button mat-button><a routerLink = "user-map" routerLinkActive = "active">Tracking</a></button>
+    <button mat-button><a routerLink = "about" routerLinkActive = "active">About</a></button>
+    <button mat-button><a routerLink = "hotlines" routerLinkActive = "active">Hotlines</a></button>
+    <button mat-button><a routerLink = "udash" routerLinkActive = "active">Dashboard</a></button>
+    <button mat-raised-button color="primary" (click) = "logout()">Logout</button>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet> 
