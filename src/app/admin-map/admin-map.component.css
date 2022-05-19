@@ -1,0 +1,36 @@
+.map {
+    height: 85vh;
+    width: 200vh;
+    margin: auto;
+    margin-top: 1%;
+    border: 2px;
+    border-style: double;
+}
+
+.cen1{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+.cen{
+    
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+mat-card{
+    height: 35%;
+    margin-top: 11%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.isize{
+    height:60px;
+    width: 70px;
+    padding-left: 49%;
+    padding-top: 1%;
+    margin-top: -10%;
+    margin-bottom: -2%;
+
+}

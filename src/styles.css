@@ -2,11 +2,5 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-html { background-image: url(./assets/0.png);
-        background-blend-mode: lighten;
-        
-         }
-background-image{
-    opacity: 3%;
-    background-size: auto;
-}
+html { background-image: url(./assets/pwd.jpg);}
+

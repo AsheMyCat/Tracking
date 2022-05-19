@@ -1,1 +1,17 @@
-<p>admin-map works!</p>
+<div *ngIf="(user | async)?.accountType == 'Admin'; else notAdmin" id="map1" class = "map"></div>
+
+    <div>
+    <ng-template #notAdmin>
+       <mat-card  #notAdmin>
+           
+        <img mat-card-image src="../../assets/warning.png" alt="mailSent" class ="isize">
+        <br><br>
+           <br>
+      <p class = "cen">  Sorry!</p><br><br>
+        <p class = "cen1">   You Don't Have Authorization to Access this Page!</p>
+      </mat-card>
+    </ng-template>
+    </div>
+
+    
+ 

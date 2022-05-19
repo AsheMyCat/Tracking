@@ -3,55 +3,119 @@
     <mat-card-title class ="tt">Sign Up</mat-card-title>
     <form [formGroup]="AdminsignupForm" (ngSubmit)="signup()">
       
-        <p>Municipality</p>
-        <select name="type" formControlName="Municipality" id="Municipality" class="form-control"
-          class="sel">
-          <option value="Alfonso">Alfonso</option>
-          <option value="Amadeo">Amadeo</option>
-          <option value="Bacoor City">Bacoor City</option>
-          <option value="Carmona">Carmona</option>
-          <option value="Cavite City">Cavite City</option>
-          <option value="Dasmariñas City">Dasmariñas City</option>
-          <option value="General Emilio Aguinaldo">General Emilio Aguinaldo</option>
-          <option value="General Mariano Alvarez">General Mariano Alvarez</option>
-          <option value="General Trias">General Trias</option>
-          <option value="Imus">Imus</option>
-          <option value="Indang">Indang</option>
-          <option value="Kawit">Kawit</option>
-          <option value="Magallanes">Magallanes</option>
-          <option value="Maragondon">Maragondon</option>
-          <option value="Mendez">Mendez</option>
-          <option value="Naic">Naic</option>
-          <option value="Noveleta">Noveleta</option>
-          <option value="Rosario">Rosario</option>
-          <option value="Silang">Silang</option>
-          <option value="Tagaytay">Tagaytay</option>
-          <option value="Tanza">Tanza</option>
-          <option value="Ternate">Ternate</option>
-          <option value="Trece Martires City">Trece Martires City</option>
-        </select>
-        <small *ngIf="AdminsignupForm.get('Municipality').invalid && AdminsignupForm.get('Municipality').touched"
-          class="text-danger">*Municipality is Required</small>
-          <br>
-      <p>Office: </p>
-      <input type="text" formControlName="Office" class="form-control">
-      <small *ngIf="AdminsignupForm.get('Office').invalid && AdminsignupForm.get('Office').touched" class="text-danger">*Office
+      <p>Surname: </p>
+      <input type="text" formControlName="Surname" class="form-control">
+      <small *ngIf="AdminsignupForm.get('Surname').invalid && AdminsignupForm.get('Surname').touched" class="text-danger">*Surname
         is Required</small>
       <br>
-      <p>Name: </p>
-      <input type="text" formControlName="Name" class="form-control">
-      <small *ngIf="AdminsignupForm.get('Name').invalid && AdminsignupForm.get('Name').touched"
-        class="text-danger">*Name is Required</small>
+      <p>First Name: </p>
+      <input type="text" formControlName="First_Name" class="form-control">
+      <small *ngIf="AdminsignupForm.get('First_Name').invalid && AdminsignupForm.get('First_Name').touched"
+        class="text-danger">*First name is Required</small>
       <br>
+      <p>Middle Name: </p>
+      <input type="text" formControlName="Middle_Name" class="form-control">
+      <small *ngIf="AdminsignupForm.get('Middle_Name').invalid && AdminsignupForm.get('Middle_Name').touched"
+        class="text-danger">*Middlename is Required</small>
+      <br>
+      <p>Suffix </p>
+      <input type="text" formControlName="Suffix" class="form-control" placeholder="I, II, III...">
+      <br>
+      <p>Age: </p>
+      <input type="number" formControlName="Age" class="form-control">
+      <small *ngIf="AdminsignupForm.get('Age').invalid && AdminsignupForm.get('Age').touched" class="text-danger">*Age is
+        Required</small>
+      <br>
+      <p>Date of Birth:</p>
+      <input type="text" formControlName="Birthday" class="form-control" placeholder="MM/DD/YYYY">
+      <small *ngIf="AdminsignupForm.get('Birthday').invalid && AdminsignupForm.get('Birthday').touched" class="text-danger">*Date
+        of birth is Required</small>
+      <br>
+      <p>Birthplace: </p>
+      <input type="text" formControlName="Birthplace" class="form-control">
+      <small *ngIf="AdminsignupForm.get('Birthplace').invalid && AdminsignupForm.get('Birthplace').touched"
+        class="text-danger">*Birthplace is Required</small>
+      <br>
+      <p>Address: </p>
+      <input type="text" formControlName="Address" class="form-control">
+      <small *ngIf="AdminsignupForm.get('Address').invalid && AdminsignupForm.get('Address').touched" class="text-danger">*Address
+        is Required</small>
+      <br>
+      <p>Mobile No.: </p>
+      <input type="number" formControlName="Contact_Number" class="form-control">
+      <small *ngIf="AdminsignupForm.get('Contact_Number').invalid && AdminsignupForm.get('Contact_Number').touched"
+        class="text-danger">*Mobile number is Required</small>
+      <br>
+      <p>Religion </p>
+      <input type="text" formControlName="Religion" class="form-control">
+      <small *ngIf="AdminsignupForm.get('Religion').invalid && AdminsignupForm.get('Religion').touched"
+        class="text-danger">*Religion is Required</small>
+      <br>
+      <p>Sex: </p>
+      <select name="type" formControlName="Sex" class="form-control" class="sel">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      
+      <small *ngIf="AdminsignupForm.get('Sex').invalid && AdminsignupForm.get('Sex').touched" class="text-danger">*Sex is
+        Required</small>
+
+      
+      <p>Civil Status: </p>
+      <select name="type" formControlName="Civil_Status" class="form-control" class="sel">
+        <option value="Single">Single</option>
+        <option value="Separated">Separated</option>
+        <option value="Cohabitation">Cohabitation</option>
+        <option value="Married">Married</option>
+        <option value="Widow/er">Widow/Widower</option>
+      </select>
+      
+      <small *ngIf="AdminsignupForm.get('Civil_Status').invalid && AdminsignupForm.get('Civil_Status').touched"
+        class="text-danger">*Civil Status is Required</small>
+      
+      <p>Type of Disability: </p>
+      <select name="type" formControlName="Type_of_Disability" class="form-control" class="sel">
+        <option value="Deaf or Hard of Hearing">Deaf or Hard of Hearing</option>
+        <option value="Intellectual Disability">Intellectual Disability</option>
+        <option value="Learning Disability">Learning Disability</option>
+        <option value="Mental Disability">Mental Disability</option>
+        <option value="Orthopedic Disability">Orthopedic Disability</option>
+        <option value="Physical Disability">Physical Disability</option>
+        <option value="Psychosocial Disability">Psychosocial Disability</option>
+        <option value="Speech and Language Impairment">Speech and Language Impairment</option>
+        <option value="Visual Disability">Visual Disability</option>
+      </select>
+      
+      <small *ngIf="AdminsignupForm.get('Type_of_Disability').invalid && AdminsignupForm.get('Type_of_Disability').touched"
+        class="text-danger">*Type of Disability is Required</small>
+    
+      <p>Cause of Disability</p>
+      <select name="type" formControlName="Cause_of_Disability" id="Cause_of_Disability" class="form-control"
+        class="sel">
+        <option value=" "></option>
+        <option value="Acquired">Acquired</option>
+        <option value="Cancer">Cancer</option>
+        <option value="Chronic Illness">Chronic Illness</option>
+        <option value="Congenital/Inborn">Congenital/Inborn</option>
+        <option value="Injury">Injury</option>
+        <option value="Rare Disease">Rare Disease</option>
+        <option value="Autism">Autism</option>
+      </select>
+      
+      <small *ngIf="AdminsignupForm.get('Cause_of_Disability').invalid && AdminsignupForm.get('Cause_of_Disability').touched"
+        class="text-danger">*Cause of Disability is Required</small>
+      
       <p>Email Address: </p>
       <input type="text" formControlName="email" class="form-control">
       <small *ngIf="AdminsignupForm.get('email').invalid && AdminsignupForm.get('email').touched" class="text-danger">*Valid Email
         Address is Required</small>
-      <br>
+      
       <p>Password: </p>
       <input type="password" formControlName="password" class="form-control">
       <small *ngIf="AdminsignupForm.get('password').invalid && AdminsignupForm.get('password').touched" class="text-danger">*Valid
         Password is Required</small>
+
+      
       <div class = "container2">
             <div>
       <button mat-raised-button class="buton1" type="submit" [disabled]="!AdminsignupForm.valid" class = "child">Register</button>

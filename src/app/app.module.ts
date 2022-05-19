@@ -65,6 +65,11 @@ import { SignupAdminComponent } from './signup-admin/signup-admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminMapComponent } from './admin-map/admin-map.component';
 import { UserMapComponent } from './user-map/user-map.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { DisasterComponent } from './disaster/disaster.component';
+import { EarthComponent } from './earth/earth.component';
+import { StormComponent } from './storm/storm.component';
+
 
 
 
@@ -90,6 +95,10 @@ import { UserMapComponent } from './user-map/user-map.component';
     AdminLoginComponent,
     AdminMapComponent,
     UserMapComponent,
+    UserUpdateComponent,
+    DisasterComponent,
+    EarthComponent,
+    StormComponent,
 
    
   ],

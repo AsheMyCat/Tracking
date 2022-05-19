@@ -18,13 +18,17 @@ import { SignupAdminComponent } from './signup-admin/signup-admin.component';
 import { AuthGuard } from './services/auth.guard';
 import { AdminMapComponent } from './admin-map/admin-map.component';
 import { UserMapComponent } from './user-map/user-map.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { DisasterComponent } from './disaster/disaster.component';
+import { EarthComponent } from './earth/earth.component';
+import { StormComponent } from './storm/storm.component';
 
 
 const routes: Routes = [
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'admin', component: AdminDashboardComponent, /*canActivate: [AuthGuard]*/ },
-  { path: 'udash', component: UserDashboardComponent, /*canActivate: [AuthGuard] */},
+  { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'udash', component: UserDashboardComponent, canActivate: [] },
   { path: 'forgot-password', component: ForgotPassComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -38,6 +42,10 @@ const routes: Routes = [
   { path: 'admin-signup', component: SignupAdminComponent },
   { path: 'admin-map', component: AdminMapComponent },
   { path: 'user-map', component: UserMapComponent },
+  { path: 'user-update', component: UserUpdateComponent },
+  { path: 'fire', component: DisasterComponent },
+  { path: 'earth', component: EarthComponent },
+  { path: 'storm', component: StormComponent },
   { path: '**', component: HomeComponent },        
 
 ];

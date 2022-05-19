@@ -1,9 +1,72 @@
+.mat-icon {
+    vertical-align: middle;
+}
+
+.toolbar{
+    position: sticky;
+}
 .spacer{
     flex: 1 1 auto;
+    
 }
 a {
     text-decoration: none;
 }
 p {
     font-size: 50px;
+}
+
+.admin{
+    flex: 1 1 auto;
+    margin-left: -3140%;
+    /*position: relative;*/
+    margin-right: 2%;
+
+}
+
+.bb {
+  margin-right: 40px;
+}
+
+.tb{
+    flex: 1 1 auto;
+    margin-left: -2950%;
+    position: relative;
+}
+
+.admin1{
+    flex: 1 1 auto;
+    margin-left: -3980%;
+    position: relative;
+}
+
+.tb1{
+    flex: 1 1 auto;
+    margin-left: -3790%;
+    position: relative;
+}
+
+.cen{
+   margin-right: 1px;
+   margin-top: 1px;
+   margin-bottom: 1px;
+   margin-left: -50%;
+   padding: 0ch;
+   margin: 0%;
+   
+}
+
+.clr{
+    background-color: rgba(237, 245, 250, 0.808);
+}
+
+mat-icon {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+mat-toolbar{
+    box-shadow: 1px;
+    box-shadow: inset;
+    opacity: 3px;;
 }

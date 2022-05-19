@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { of as observableOf } from 'rxjs';
 import { map } from 'rxjs/operators'; 
+import { __values } from 'tslib';
+import { User } from './user.model';
 
 declare const L: any;
 
@@ -18,6 +20,7 @@ export class AuthService {
     admin!:Observable<any>
     userLoggedIn: boolean;      // other components can check on this variable for the login status of the user
     adminLoggedIn: boolean;
+    array = [];
     constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore) {
         this.userLoggedIn = false;
         this.user = null;
@@ -41,6 +44,8 @@ export class AuthService {
             }
         });
     }
+
+    userList: Observable<any>;
 
     //USER LOGIN, SIGNUP
 
@@ -73,7 +78,6 @@ export class AuthService {
                 this.afs.doc('/users/' + emailLower)                        // on a successful signup, create a document in 'users' collection with the new user's info
                     .set({
                         accountType: 'endUser',
-                        //uid: user.uid,
                         Surname: user.Surname,
                         First_Name: user.First_Name,
                         Middle_Name: user.Middle_Name,
@@ -122,7 +126,7 @@ export class AuthService {
     async resendVerificationEmail() {                         // verification email is sent in the Sign Up function, but if you need to resend, call this function
         return (await this.afAuth.currentUser).sendEmailVerification()
             .then(() => {
-                // this.router.navigate(['home']);
+                 this.router.navigate(['home']);
             })
             .catch(error => {
                 console.log('Auth Service: sendVerificationEmail error...');
@@ -165,7 +169,7 @@ export class AuthService {
     loginAdmin(email: string, password: string): Promise<any> {
         return this.afAuth.signInWithEmailAndPassword(email, password)
             .then(() => {
-                console.log('Auth Service: loginUser: success');
+                console.log('Auth Service: loginAdmin: success');
                 // this.router.navigate(['/dashboard']);
             })
             .catch(error => {
@@ -177,21 +181,32 @@ export class AuthService {
             });
     }
 
-    signupAdmin(admin: any): Promise<any> {
-        return this.afAuth.createUserWithEmailAndPassword(admin.email, admin.password)
+    signupAdmin(user: any): Promise<any> {
+        return this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
             .then((result) => {
-                let emailId = admin.email.toLowerCase();
+                let emailLower = user.email.toLowerCase();
                 const timestamp = this.timestamp;
-                this.afs.doc('/admin/' + emailId)                        // on a successful signup, create a document in 'users' collection with the new user's info
+                this.afs.doc('/users/' + emailLower)                        // on a successful signup, create a document in 'users' collection with the new user's info
                     .set({
                         accountType: 'Admin',
-                        Municipality: admin.Municipality,
-                        Office: admin.Office,
-                        Name: admin.Name,
-                        email: admin.email,
-                        password: admin.password,
-                        emailId: emailId,
-                        CreatedAt: timestamp
+                        Surname: user.Surname,
+                        First_Name: user.First_Name,
+                        Middle_Name: user.Middle_Name,
+                        Suffix: user.Suffix,
+                        Age: user.Age,
+                        Birthday: user.Birthday, 
+                        Birthplace: user.Birthplace,
+                        Address: user.Address,
+                        Contact_Number: user.Contact_Number,
+                        Religion: user.Religion,
+                        Sex: user.Sex,
+                        Civil_Status: user.Civil_Status,
+                        Type_of_Disability: user.Type_of_Disability,
+                        Cause_of_Disability: user.Cause_of_Disability,
+                        email: user.email,
+                        password: user.password,
+                        createdAt: timestamp,
+                        Email_Lower: emailLower
                        
                     });
 
@@ -226,6 +241,67 @@ export class AuthService {
                 console.log(res);
             })
     }
+//CRUD METHODS
+    getUser(){
+        this.userList = this.afs.collection('users').snapshotChanges()
+        return this.userList;
+    }
 
+    getUserDoc(id){
+        return this.afs
+        .collection('users')
+        .doc(id)
+        .valueChanges()
+    }
 
+    getUserList() {
+        return this.afs
+          .collection("users")
+          .snapshotChanges()
+      }
+
+    deleteUser(email){
+        let user = this.afs.collection('users', ref => ref.where('Email_Lower', '==', email));
+        user.get().forEach(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                doc.ref.delete();
+            });
+        });
+        // this.afAuth.authState.subscribe(user => {
+        //     if (user) {
+        //         let emailLower = user.email.toLowerCase();
+        //         this.afs.firestore.collection('users').doc(emailLower).delete();
+        //     }
+    //})
+    }
+
+    updateUser(user: User, email){
+        let users = this.afs.collection('users', ref => ref.where('Email_Lower', '==', email));
+        users.get().forEach(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                doc.ref.update({ 
+       
+       /* return this.afs
+        .collection("users")
+        .doc(Email_Lower)*/
+       // .update({
+        Surname: user.Surname,
+        First_Name: user.First_Name,
+        Middle_Name: user.Middle_Name,
+        Suffix: user.Suffix,
+        Age: user.Age,
+        Birthday: user.Birthday,
+        Birthplace: user.Birthplace,
+        Address: user.Address,
+        Contact_Number: user.Contact_Number,
+        Religion: user.Religion,
+        Sex: user.Sex,
+        Civil_Status: user.Civil_Status,
+        Type_of_Disability: user.Type_of_Disability,
+        Cause_of_Disability: user.Cause_of_Disability
+        })
+    });
+});
+    }
+    
 }

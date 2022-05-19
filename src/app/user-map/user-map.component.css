@@ -24,15 +24,90 @@ input[type=text] {
     text-align: center;
   }
 
-  .button {
+  /*.button {
       width: 10%;
       color: rgb(0, 0, 0);
       border: 1px solid slateblue;
       height: 37px;
       margin-left: 2%;
+  }*/
+
+  .button {
+    position: relative;
+    background-color: #04AA6D;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 2px;
+    width: 11%;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: 5%;
+  }
+  
+  .button:after {
+    content: "";
+    background: #90EE90;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
   }
 
+  /*Off*/
 
+  .button1 {
+    position: relative;
+    background-color: #fd0000;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 2px;
+    width: 11%;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 0.8%;
+    margin-left: 10%;
+  }
+  
+  .button1:after {
+    content: "";
+    background: #f03c3c;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .button1:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
 
 
 

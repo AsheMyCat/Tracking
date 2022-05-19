@@ -79,5 +79,9 @@ input[type=text], input[type=password] {
     margin-top: 0%;
     margin-bottom: 0%;
     image-resolution: 100%;
+}
 
+.clr{
+  background-color: rgba(86, 184, 241, 0.808);
+  padding: 22px;
 }

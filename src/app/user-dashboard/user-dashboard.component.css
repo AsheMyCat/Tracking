@@ -8,7 +8,43 @@
     height:122%;
 }
 
+.c1 {
+    padding: 5px;
+    background-color: rgb(192, 235, 248);
+    text-align: center;
+}
+
+.c {
+    padding: 1px;
+    background-color: antiquewhite;
+    
+}
+
+.p2{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 2%;
+    font-style: italic;
+    font-weight: bold;
+}
+
 .container {
     padding-bottom: 0%;
     margin-bottom: 0%;
+}
+
+mat-card-title{
+    text-align: center;
+}
+
+.p1{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 2px;
+    color: blue;
+    font-family: Arial;
+}
+
+mat-list-item{
+    font-size: 22px;
 }

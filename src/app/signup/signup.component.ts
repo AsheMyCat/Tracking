@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
         this.isProgressVisible = true;
         this.authService.signupUser(this.signupForm.value).then((result) => {
             if (result == null)                                 // null is success, false means there was an error
-                this.router.navigate(['/login']);
+                this.router.navigate(['/verify-email']);
             else if (result.isValid == false)
                 this.firebaseErrorMessage = result.message;
 

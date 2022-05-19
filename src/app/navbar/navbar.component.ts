@@ -11,14 +11,43 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public afAuth: AngularFireAuth, private firestore: AngularFirestore, private router: Router) { }
+  
+  admin: Observable<any>;
+  user: Observable<any>;
+  
+  constructor(public afAuth: AngularFireAuth, private firestore: AngularFirestore, private router: Router) {
+    this.admin = null;
+    this.user = null;
+   }
 
   ngOnInit(): void {
+    this.afAuth.authState.subscribe(admin => {                                                   // grab the user object from Firebase Authorization
+      if (admin) {
+          let emailLower = admin.email.toLowerCase();
+          this.admin = this.firestore.collection('admin').doc(emailLower).valueChanges();      // get the user's doc in Cloud Firestore
+      console.log("c",this.admin)
+        }
+  });
+
+  this.afAuth.authState.subscribe(user => {                                                   // grab the user object from Firebase Authorization
+    if (user) {
+        let emailLower = user.email.toLowerCase();
+        this.user = this.firestore.collection('users').doc(emailLower).valueChanges();      // get the user's doc in Cloud Firestore
+    console.log("c",this.user)
+      }
+});
+
+  }
+
+  signOut() {
+    this.afAuth.signOut();
+    this.router.navigate(['/home']);
   }
   
   logout(): void {
     this.afAuth.signOut();
     this.router.navigate(['/home']); 
 }
+
 
 }

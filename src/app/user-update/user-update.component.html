@@ -1,0 +1,87 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card class = "container">
+        <mat-card-title class ="tt">User Information Update</mat-card-title>
+        <form [formGroup]="userUpdateForm" (ngSubmit)="onSubmit()">
+          
+          <p>Surname: </p>
+          <input type="text" formControlName="Surname" class="form-control">
+          <br>
+          <p>First Name: </p>
+          <input type="text" formControlName="First_Name" class="form-control">
+          <br>
+          <p>Middle Name: </p>
+          <input type="text" formControlName="Middle_Name" class="form-control">
+          <br>
+          <p>Suffix </p>
+          <input type="text" formControlName="Suffix" class="form-control" placeholder="I, II, III...">
+          <br>
+          <p>Age: </p>
+          <input type="number" formControlName="Age" class="form-control">
+          <br>
+          <p>Date of Birth:</p>
+          <input type="text" formControlName="Birthday" class="form-control" placeholder="MM/DD/YYYY">
+          <br>
+          <p>Birthplace: </p>
+          <input type="text" formControlName="Birthplace" class="form-control">
+          <br>
+          <p>Address: </p>
+          <input type="text" formControlName="Address" class="form-control">
+          <br>
+          <p>Mobile No.: </p>
+          <input type="number" formControlName="Contact_Number" class="form-control">
+          <br>
+          <p>Religion </p>
+          <input type="text" formControlName="Religion" class="form-control">
+          <br>
+          <p>Sex: </p>
+          <select name="type" formControlName="Sex" class="form-control" class="sel">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+         <br>
+          <p>Civil Status: </p>
+          <select name="type" formControlName="Civil_Status" class="form-control" class="sel">
+            <option value="Single">Single</option>
+            <option value="Separated">Separated</option>
+            <option value="Cohabitation">Cohabitation</option>
+            <option value="Married">Married</option>
+            <option value="Widow/er">Widow/Widower</option>
+          </select>
+          <br>
+          <p>Type of Disability: </p>
+          <select name="type" formControlName="Type_of_Disability" class="form-control" class="sel">
+            <option value="Deaf or Hard of Hearing">Deaf or Hard of Hearing</option>
+            <option value="Intellectual Disability">Intellectual Disability</option>
+            <option value="Learning Disability">Learning Disability</option>
+            <option value="Mental Disability">Mental Disability</option>
+            <option value="Orthopedic Disability">Orthopedic Disability</option>
+            <option value="Physical Disability">Physical Disability</option>
+            <option value="Psychosocial Disability">Psychosocial Disability</option>
+            <option value="Speech and Language Impairment">Speech and Language Impairment</option>
+            <option value="Visual Disability">Visual Disability</option>
+          </select>
+          <br>
+          <p>Cause of Disability</p>
+          <select name="type" formControlName="Cause_of_Disability" id="Cause_of_Disability" class="form-control"
+            class="sel">
+            <option value=" "></option>
+            <option value="Acquired">Acquired</option>
+            <option value="Cancer">Cancer</option>
+            <option value="Chronic Illness">Chronic Illness</option>
+            <option value="Congenital/Inborn">Congenital/Inborn</option>
+            <option value="Injury">Injury</option>
+            <option value="Rare Disease">Rare Disease</option>
+            <option value="Autism">Autism</option>
+          </select>
+        
+          <div class = "container2">
+                <div>
+          <button mat-raised-button class="buton1" type="submit" [disabled]="!userUpdateForm.valid" class = "child">Update</button>
+                </div>
+          </div>
+    
+          <br>
+        </form>
+      </mat-card>
+      </div>
+    

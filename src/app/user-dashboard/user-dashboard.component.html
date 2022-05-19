@@ -1,19 +1,12 @@
 <div class = "container">
-<mat-card class="card">
+<div class="card">
+    <mat-card>
 <mat-list *ngIf="( user | async)">
-    <mat-card-title>Welcome {{ (user | async)?.First_Name}}!</mat-card-title>
+    <br>
+    <p class = "p2">Welcome {{ (user | async)?.First_Name.toUpperCase()}}!</p>
+    <br>
     <mat-divider></mat-divider>
-    <mat-list-item>Account Type: {{ (user | async)?.accountType }}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Display Name: {{ (user | async)?.displayName }}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Surname: {{ (user | async)?.Surname}}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>First Name: {{ (user | async)?.First_Name}}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Middle Name: {{ (user | async)?.Middle_Name}}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Suffx: {{ (user | async)?.Suffix}}</mat-list-item>
+    <mat-list-item>Name: {{ (user | async)?.Surname}}, {{ (user | async)?.First_Name}} {{ (user | async)?.Middle_Name}} {{ (user | async)?.Suffix}}</mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>Age: {{ (user | async)?.Age }}</mat-list-item>
     <mat-divider></mat-divider>
@@ -31,12 +24,16 @@
     <mat-divider></mat-divider>
     <mat-list-item>Civil Status: {{ (user | async)?.Civil_Status }}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Email Address: {{ (user | async)?.Email_Address }}</mat-list-item>
+    <mat-list-item>Email Address: {{ (user | async)?.email }}</mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>Email Verification Status: {{ (afAuth.user | async)?.emailVerified }}</mat-list-item>
     <mat-divider></mat-divider>
+    <br>
+    <p class ="p1" routerLink="/verify-email">Not Verified Yet? Click Here to Verify Your Account!</p>
+    <mat-divider></mat-divider>
+        <br>
 </mat-list>
 </mat-card>
-<br>
-<br>
 </div>
+<br>
+<br>

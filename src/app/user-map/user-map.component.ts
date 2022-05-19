@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { MatDialog } from '@angular/material/dialog';
 
 declare const L: any;
 @Component({
@@ -17,7 +18,8 @@ export class UserMapComponent implements OnInit {
   y!: any;
   ll!:any;
   wp: any;
-  constructor(private afs: AngularFirestore, public firebaseAuth: AngularFireAuth, public authService: AuthService) { }
+  constructor(private afs: AngularFirestore, public firebaseAuth: AngularFireAuth, public authService: AuthService,
+    dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (!navigator.geolocation) {
@@ -75,10 +77,25 @@ export class UserMapComponent implements OnInit {
           let emailLower = user.email.toLowerCase();
           let Coordinates = 'Coordinates'
            this.afs
-          .collection('register')
+          .collection('users')
           .doc(emailLower)
-          .collection('location').doc(Coordinates)
+          .collection('location').doc(emailLower)
           .set({
+            'Coordinates': " " + this.latlong,
+            'Latitude':  this.x,
+            'Longitude':  this.y,
+            'Watch Position':" " + this.wp,
+            'TimeLog': this.authService.timestamp
+          })
+          
+           this.afs
+          .collection('users')
+          .doc(emailLower)
+          .collection('location').doc(emailLower)
+          .collection('history')
+          .doc(emailLower)
+          .set({
+            'Email_Address': user.email.toLowerCase(),
             'Coordinates': " " + this.latlong,
             'Latitude':  this.x,
             'Longitude':  this.y,
@@ -87,7 +104,24 @@ export class UserMapComponent implements OnInit {
           })
       }
     });
-    
+    alert("You have successfully turned on your share location")
+  }
+
+  delCoordinates(){
+    this.firebaseAuth.authState.subscribe(user => {
+      console.log('Deleting Current Location Works', user);
+
+      if (user) {
+          let emailLower = user.email.toLowerCase();
+          let Coordinates = 'Coordinates'
+           this.afs
+          .collection('users')
+          .doc(emailLower)
+          .collection('location').doc(Coordinates)
+          .delete();
+      }
+    });
+    alert("You have turned off your share location")
   }
 
   watchPosition(){
@@ -106,7 +140,7 @@ export class UserMapComponent implements OnInit {
     },(err) => {
       console.log(err);
     }, { enableHighAccuracy: true,
-      timeout: 5000,
+      timeout: 10000,
       maximumAge: 0
     })
      this.c = this.wp;
