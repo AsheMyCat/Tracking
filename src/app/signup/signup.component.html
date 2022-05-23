@@ -2,6 +2,10 @@
   <mat-card class = "container">
     <mat-card-title class ="tt">Sign Up</mat-card-title>
     <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <p>PWD ID: </p>
+      <input type="text" formControlName="pwdid" class="form-control">
+      <small *ngIf="signupForm.get('pwdid').invalid && signupForm.get('pwdid').touched" class="text-danger">*Surname
+        is Required</small>
       <p>Surname: </p>
       <input type="text" formControlName="Surname" class="form-control">
       <small *ngIf="signupForm.get('Surname').invalid && signupForm.get('Surname').touched" class="text-danger">*Surname
@@ -30,11 +34,6 @@
       <small *ngIf="signupForm.get('Birthday').invalid && signupForm.get('Birthday').touched" class="text-danger">*Date
         of birth is Required</small>
       <br>
-      <p>Birthplace: </p>
-      <input type="text" formControlName="Birthplace" class="form-control">
-      <small *ngIf="signupForm.get('Birthplace').invalid && signupForm.get('Birthplace').touched"
-        class="text-danger">*Birthplace is Required</small>
-      <br>
       <p>Address: </p>
       <input type="text" formControlName="Address" class="form-control">
       <small *ngIf="signupForm.get('Address').invalid && signupForm.get('Address').touched" class="text-danger">*Address
@@ -45,11 +44,7 @@
       <small *ngIf="signupForm.get('Contact_Number').invalid && signupForm.get('Contact_Number').touched"
         class="text-danger">*Mobile number is Required</small>
       <br>
-      <p>Religion </p>
-      <input type="text" formControlName="Religion" class="form-control">
-      <small *ngIf="signupForm.get('Religion').invalid && signupForm.get('Religion').touched"
-        class="text-danger">*Religion is Required</small>
-      <br>
+      
       <p>Sex: </p>
       <select name="type" formControlName="Sex" class="form-control" class="sel">
         <option value="Male">Male</option>
@@ -87,23 +82,7 @@
       
       <small *ngIf="signupForm.get('Type_of_Disability').invalid && signupForm.get('Type_of_Disability').touched"
         class="text-danger">*Type of Disability is Required</small>
-    
-      <p>Cause of Disability</p>
-      <select name="type" formControlName="Cause_of_Disability" id="Cause_of_Disability" class="form-control"
-        class="sel">
-        <option value=" "></option>
-        <option value="Acquired">Acquired</option>
-        <option value="Cancer">Cancer</option>
-        <option value="Chronic Illness">Chronic Illness</option>
-        <option value="Congenital/Inborn">Congenital/Inborn</option>
-        <option value="Injury">Injury</option>
-        <option value="Rare Disease">Rare Disease</option>
-        <option value="Autism">Autism</option>
-      </select>
-      
-      <small *ngIf="signupForm.get('Cause_of_Disability').invalid && signupForm.get('Cause_of_Disability').touched"
-        class="text-danger">*Cause of Disability is Required</small>
-      
+
       <p>Email Address: </p>
       <input type="text" formControlName="email" class="form-control">
       <small *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched" class="text-danger">*Valid Email
@@ -114,17 +93,28 @@
       <small *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched" class="text-danger">*Valid
         Password is Required</small>
 
-      
       <div class = "container2">
             <div>
-      <button mat-raised-button class="buton1" type="submit" [disabled]="!signupForm.valid" class = "child">Register</button>
+      <button mat-raised-button type="submit" [disabled]="!signupForm.valid" class = "child">Register</button>
       <button mat-raised-button color="warn" type="reset" class="child2">Reset</button>
-
+      
+      <div class = "end">
       <p class = "fp"><a routerLink="/login" routerLinkActive="active">Already Have an Account? Click Here to Login</a></p>
-            </div>
+    </div>
+        
+    </div>
       </div>
 
-      <br>
+      <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <mat-card>
+        <span>{{ firebaseErrorMessage }}</span>
+        </mat-card>
+      </div>
     </form>
+    <br>
   </mat-card>
+
+</div>
+<div>
+<br>
 </div>

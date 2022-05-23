@@ -84,11 +84,11 @@ a {
 }
 
 .container {
-  padding: 22px;
+  padding: 26px;
 }
 
 .container2 {
-  padding: 14px;
+  padding: 22px;
 }
 
 .child {
@@ -98,7 +98,7 @@ a {
   position: absolute;
   top: 97%;
   left: 3.5%;
-  margin-top: -25px; /* Half this element's height */
+  margin-top: -48px; /* Half this element's height */
 }
 
 .child2 {
@@ -108,7 +108,7 @@ a {
   position: absolute;
   top: 97%;
   left: 55.5%;
-  margin-top: -25px; /* Half this element's height */
+  margin-top: -48px; /* Half this element's height */
 }
 
 .fp{
@@ -119,5 +119,9 @@ a {
   position: absolute;
   top: 100%;
   left: 25%;
-  margin-top: -25px; /* Half this element's height */
+  margin-top: -35px; /* Half this element's height */
+}
+
+.end{
+  margin-top: 10px;
 }

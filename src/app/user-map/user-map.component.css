@@ -39,7 +39,7 @@ input[type=text] {
     font-size: 28px;
     color: #FFFFFF;
     padding: 2px;
-    width: 11%;
+    width: 14%;
     text-align: center;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -78,7 +78,7 @@ input[type=text] {
     font-size: 28px;
     color: #FFFFFF;
     padding: 2px;
-    width: 11%;
+    width: 14%;
     text-align: center;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -86,6 +86,7 @@ input[type=text] {
     overflow: hidden;
     cursor: pointer;
     margin-top: 0.8%;
+    text-align: center;
     margin-left: 10%;
   }
   

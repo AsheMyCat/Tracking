@@ -2,9 +2,9 @@
 <mat-card class = "size">
     <form [formGroup]="forgotPasswordForm" (ngSubmit)="retrievePassword()" type="">
         <img mat-card-image src="../../assets/icons8-forgot-password-64.png" alt="forgotpass" class ="isize">
-        <p>A password-reset email will be sent to...</p>
+        <p>Hi! Please enter your email address to change your password</p>
         <p>
-                <label for = "email">Email</label>
+               
                 <input autocomplete="off" formControlName="email" type="text"  placeholder="ex: y@mail.com">
         </p>
 
@@ -13,7 +13,7 @@
         </div>
 
         <button mat-raised-button color="primary" [disabled]="mailSent" class = "align1">Reset my password</button>
-        <div *ngIf="mailSent">
+        <div *ngIf="mailSent" class ="one">
             <p>An email has been sent!</p>
             <button mat-raised-button color="primary" routerLink="/home">
                 <mat-icon>home</mat-icon>

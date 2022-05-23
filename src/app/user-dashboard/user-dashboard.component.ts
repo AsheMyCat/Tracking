@@ -29,8 +29,8 @@ export class UserDashboardComponent implements OnInit {
       }
 
       
-      
   });
+  
  /* this.afAuth.authState.subscribe(history => {
     console.log('Dashboard: user history', history);
 
@@ -48,7 +48,7 @@ export class UserDashboardComponent implements OnInit {
 
   userHistory(): void {
 
-
+    
   }
 
 }

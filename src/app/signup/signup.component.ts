@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
     
     constructor(private authService: AuthService, private router: Router, private afAuth: AngularFireAuth) {
         this.isProgressVisible = false;
-        this.firebaseErrorMessage = 'Invalid';
+        this.firebaseErrorMessage = "";
     }
 
     ngOnInit(): void {
@@ -28,20 +28,18 @@ export class SignupComponent implements OnInit {
         }
 
         this.signupForm = new FormGroup({
+            'pwdid': new FormControl(''),
             'Surname': new FormControl('', Validators.required),
             'First_Name': new FormControl('', Validators.required),
             'Middle_Name': new FormControl('', Validators.required),
             'Suffix': new FormControl(''),
             'Age': new FormControl('', Validators.required),
             'Birthday': new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
-            'Birthplace': new FormControl('', Validators.required),
             'Address':  new FormControl('', Validators.required),
             'Contact_Number':  new FormControl ('', Validators.required),
-            'Religion':  new FormControl ('', Validators.required),
             'Sex':  new FormControl ('', Validators.required),
             'Civil_Status':  new FormControl ('', Validators.required),
             'Type_of_Disability':  new FormControl ('', Validators.required),
-            'Cause_of_Disability':  new FormControl ('', Validators.required),
             'email':  new FormControl ('', [Validators.required, Validators.email]),
             'password':  new FormControl ('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
         });
@@ -54,7 +52,7 @@ export class SignupComponent implements OnInit {
         this.isProgressVisible = true;
         this.authService.signupUser(this.signupForm.value).then((result) => {
             if (result == null)                                 // null is success, false means there was an error
-                this.router.navigate(['/verify-email']);
+                this.router.navigate(['/dashboard']);
             else if (result.isValid == false)
                 this.firebaseErrorMessage = result.message;
 

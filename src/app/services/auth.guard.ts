@@ -21,8 +21,8 @@ export class AuthGuard implements CanActivate{
             this.afAuth.onAuthStateChanged((user) => {
                 if (user) {
 
-                     if (!user.emailVerified)                            // if the user hasn't verified their email, send them to that page
-                        this.router.navigate(['/verify-email/']);
+                  //   if (!user.emailVerified)                            // if the user hasn't verified their email, send them to that page
+                    //    this.router.navigate(['/verify-email/']);
 
                     resolve(true);
                 } else {
@@ -30,6 +30,7 @@ export class AuthGuard implements CanActivate{
                     this.router.navigate(['/home/']);                   // a logged out user will always be sent to home
                     resolve(false);
                 }
+                console.log("user", user)
             });
         });
 

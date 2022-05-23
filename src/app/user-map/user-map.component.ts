@@ -76,6 +76,7 @@ export class UserMapComponent implements OnInit {
       if (user) {
           let emailLower = user.email.toLowerCase();
           let Coordinates = 'Coordinates'
+         // let uid = resolve
            this.afs
           .collection('users')
           .doc(emailLower)
@@ -88,12 +89,13 @@ export class UserMapComponent implements OnInit {
             'TimeLog': this.authService.timestamp
           })
           
+          let uid = this.afs.createId();
            this.afs
           .collection('users')
           .doc(emailLower)
           .collection('location').doc(emailLower)
           .collection('history')
-          .doc(emailLower)
+          .doc(uid)
           .set({
             'Email_Address': user.email.toLowerCase(),
             'Coordinates': " " + this.latlong,
@@ -113,11 +115,10 @@ export class UserMapComponent implements OnInit {
 
       if (user) {
           let emailLower = user.email.toLowerCase();
-          let Coordinates = 'Coordinates'
            this.afs
           .collection('users')
           .doc(emailLower)
-          .collection('location').doc(Coordinates)
+          .collection('location').doc(emailLower)
           .delete();
       }
     });

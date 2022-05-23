@@ -31,11 +31,6 @@
       <small *ngIf="AdminsignupForm.get('Birthday').invalid && AdminsignupForm.get('Birthday').touched" class="text-danger">*Date
         of birth is Required</small>
       <br>
-      <p>Birthplace: </p>
-      <input type="text" formControlName="Birthplace" class="form-control">
-      <small *ngIf="AdminsignupForm.get('Birthplace').invalid && AdminsignupForm.get('Birthplace').touched"
-        class="text-danger">*Birthplace is Required</small>
-      <br>
       <p>Address: </p>
       <input type="text" formControlName="Address" class="form-control">
       <small *ngIf="AdminsignupForm.get('Address').invalid && AdminsignupForm.get('Address').touched" class="text-danger">*Address
@@ -45,11 +40,6 @@
       <input type="number" formControlName="Contact_Number" class="form-control">
       <small *ngIf="AdminsignupForm.get('Contact_Number').invalid && AdminsignupForm.get('Contact_Number').touched"
         class="text-danger">*Mobile number is Required</small>
-      <br>
-      <p>Religion </p>
-      <input type="text" formControlName="Religion" class="form-control">
-      <small *ngIf="AdminsignupForm.get('Religion').invalid && AdminsignupForm.get('Religion').touched"
-        class="text-danger">*Religion is Required</small>
       <br>
       <p>Sex: </p>
       <select name="type" formControlName="Sex" class="form-control" class="sel">
@@ -88,22 +78,6 @@
       
       <small *ngIf="AdminsignupForm.get('Type_of_Disability').invalid && AdminsignupForm.get('Type_of_Disability').touched"
         class="text-danger">*Type of Disability is Required</small>
-    
-      <p>Cause of Disability</p>
-      <select name="type" formControlName="Cause_of_Disability" id="Cause_of_Disability" class="form-control"
-        class="sel">
-        <option value=" "></option>
-        <option value="Acquired">Acquired</option>
-        <option value="Cancer">Cancer</option>
-        <option value="Chronic Illness">Chronic Illness</option>
-        <option value="Congenital/Inborn">Congenital/Inborn</option>
-        <option value="Injury">Injury</option>
-        <option value="Rare Disease">Rare Disease</option>
-        <option value="Autism">Autism</option>
-      </select>
-      
-      <small *ngIf="AdminsignupForm.get('Cause_of_Disability').invalid && AdminsignupForm.get('Cause_of_Disability').touched"
-        class="text-danger">*Cause of Disability is Required</small>
       
       <p>Email Address: </p>
       <input type="text" formControlName="email" class="form-control">

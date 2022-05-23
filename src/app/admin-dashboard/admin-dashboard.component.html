@@ -1,6 +1,4 @@
-<div *ngIf="(user | async)?.accountType == 'Admin'; else notAdmin">
-
- <table id = "users" >
+<table id = "users" >
     <thead>
         <tr>
             <th scope = "col">#</th>
@@ -10,16 +8,12 @@
             <th scope = "col">Suffix</th>
             <th scope = "col">Age</th>
             <th scope = "col">Birthday</th>
-            <th scope = "col">Birthplace</th>
             <th scope = "col">Address</th>
             <th scope = "col">Contact Number</th>
-            <th scope = "col">Religion</th>
             <th scope = "col">Sex</th>
             <th scope = "col">Civil Status</th>
             <th scope = "col">Type of Disability</th>
-            <th scope = "col">Cause of Disability</th>
             <th scope = "col">Email Address</th>
-            <th scope = "col"></th>
         </tr>
     </thead>
 <tbody>
@@ -31,28 +25,10 @@
         <td>{{ users.Suffix }}</td>
         <td>{{ users.Age }}</td>
         <td>{{ users.Birthday }}</td>
-        <td>{{ users.Birthplace }}</td>
         <td>{{ users.Address }}</td>
         <td>{{ users.Contact_Number }}</td>
-        <td>{{ users.Religion }}</td>
         <td>{{ users.Sex }}</td>
         <td>{{ users.Civil_Status }}</td>
         <td>{{ users.Type_of_Disability }}</td>
-        <td>{{ users.Cause_of_Disability }}</td>
-        <td>{{ users.Email_Lower }}</td>
-        <td>
-            <button (click) = "del(users.Email_Lower)">Delete</button>
-           
-        </td>      
+        <td>{{ users.Email_Lower }}</td>  
 </table>
-
-</div>
-<ng-template #notAdmin>
-    <mat-card class = "c1">
-     <img mat-card-image src="../../assets/warning.png" alt="mailSent" class ="isize">
-     <br><br>
-        <br><br>
-   <p class = "cen">  Sorry!</p><br><br>
-     <p class = "cen1">   You Don't Have Authorization to Access this Page!</p>
-   </mat-card>
- </ng-template>

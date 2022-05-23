@@ -24,8 +24,8 @@ export class NavbarComponent implements OnInit {
     this.afAuth.authState.subscribe(admin => {                                                   // grab the user object from Firebase Authorization
       if (admin) {
           let emailLower = admin.email.toLowerCase();
-          this.admin = this.firestore.collection('admin').doc(emailLower).valueChanges();      // get the user's doc in Cloud Firestore
-      console.log("c",this.admin)
+          this.admin = this.firestore.collection('user').doc(emailLower).valueChanges();      // get the user's doc in Cloud Firestore
+      console.log("admin",this.admin)
         }
   });
 
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
     if (user) {
         let emailLower = user.email.toLowerCase();
         this.user = this.firestore.collection('users').doc(emailLower).valueChanges();      // get the user's doc in Cloud Firestore
-    console.log("c",this.user)
+    console.log("user",this.user)
       }
 });
 

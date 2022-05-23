@@ -12,42 +12,41 @@
         <button mat-menu-item><a routerLink = "earth" routerLinkActive = "active">Earthquake Drill & Tips</a></button>
         <button mat-menu-item><a routerLink = "storm" routerLinkActive = "active">Storm Surge Drill & Tips</a></button>
     </mat-menu>
-    <button mat-icon-button aria-label="Location">
-        <mat-icon>add_location</mat-icon>
-      </button>
-    <button mat-icon-button aria-label="table">
-        <mat-icon>table_chart</mat-icon>
-    </button>
-
 </mat-toolbar>
 
 
 <mat-toolbar class = "clr" *ngIf="(afAuth.user| async)">
+   <span></span>
     <span>CETS</span>
     <mat-icon>accessible</mat-icon>
       <div class = "spacer"></div>
     <button mat-button><a routerLink = "home" routerLinkActive = "active">Home</a></button>
     <button mat-button><a routerLink = "about" routerLinkActive = "active">About</a></button>
     <button mat-button><a routerLink = "hotlines" routerLinkActive = "active">Hotlines</a></button>
-    <button mat-button><a routerLink = "user-map" routerLinkActive = "active">Tracking</a></button>
-    <button mat-button><a routerLink = "udash" routerLinkActive = "active">Dashboard</a></button>
-    <button mat-raised-button color="primary" (click) = "logout()">Logout</button>
+
+    <button mat-button *ngIf="(user | async)?.accountType == 'endUser'"><a routerLink = "user-map" routerLinkActive = "active">Tracking</a></button>
+    <button mat-button *ngIf="(user | async)?.accountType == 'endUser'"><a routerLink = "user-info" routerLinkActive = "active">Dashboard</a></button>
+
+
+    <button mat-icon-button aria-label="Location" *ngIf="(user | async)?.accountType == 'Admin'">
+        <a routerLink = "admin-map" routerLinkActive = "active">
+        <mat-icon>add_location</mat-icon>
+        </a>
+    </button>
+    <button mat-icon-button aria-label="table" class = "cen" *ngIf="(user | async)?.accountType == 'Admin'">
+        <a routerLink = "admin" routerLinkActive = "active">
+        <mat-icon class = "cen">table_chart</mat-icon>
+        </a>
+    </button>
+
+
     <button mat-button [matMenuTriggerFor]="menu"><a routerLinkActive = "active">Tips</a></button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item><a routerLink = "fire" routerLinkActive = "active">Fire Drill & Tips</a></button>
         <button mat-menu-item><a routerLink = "earth" routerLinkActive = "active">Earthquake Drill & Tips</a></button>
         <button mat-menu-item><a routerLink = "storm" routerLinkActive = "active">Storm Surge Drill & Tips</a></button>
     </mat-menu>
-    <button mat-icon-button aria-label="Location">
-        <a routerLink = "admin-map" routerLinkActive = "active">
-        <mat-icon>add_location</mat-icon>
-        </a>
-    </button>
-    <button mat-icon-button aria-label="table" class = "cen">
-        <a routerLink = "admin" routerLinkActive = "active">
-        <mat-icon class = "cen">table_chart</mat-icon>
-        </a>
-    </button>
+    <button mat-raised-button color="primary" (click) = "logout()">Logout</button>
 </mat-toolbar>
 
  

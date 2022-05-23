@@ -39,4 +39,8 @@ input[type=text], input[type=password] {
     margin-top: 0%;
     margin-bottom: 3%;
 }
+.one{
+    align-self: center;
+    align-content: center;
+}
   

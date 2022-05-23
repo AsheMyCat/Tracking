@@ -22,13 +22,14 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { DisasterComponent } from './disaster/disaster.component';
 import { EarthComponent } from './earth/earth.component';
 import { StormComponent } from './storm/storm.component';
+import { AdminGuard } from './services/admin.guard';
 
 
 const routes: Routes = [
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
-  { path: 'udash', component: UserDashboardComponent, canActivate: [] },
+  { path: 'admin', component: AdminDashboardComponent, canActivate: [] },
+  { path: 'user-info', component: UserDashboardComponent, canActivate: [] },
   { path: 'forgot-password', component: ForgotPassComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -39,9 +40,9 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'nav', component: NavbarComponent },
   { path: 'admin-login', component: AdminLoginComponent },
-  { path: 'admin-signup', component: SignupAdminComponent },
-  { path: 'admin-map', component: AdminMapComponent },
-  { path: 'user-map', component: UserMapComponent },
+  { path: 'signup-admin', component: SignupAdminComponent },
+  { path: 'admin-map', component: AdminMapComponent, canActivate:[] },
+  { path: 'user-map', component: UserMapComponent, canActivate:[] },
   { path: 'user-update', component: UserUpdateComponent },
   { path: 'fire', component: DisasterComponent },
   { path: 'earth', component: EarthComponent },
