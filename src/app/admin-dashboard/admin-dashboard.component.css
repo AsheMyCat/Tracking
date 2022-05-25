@@ -49,3 +49,10 @@
     background-color: #04AA6D;
     color: white;
   }
+
+  .mySearch {
+    width: 100%;
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #ddd;
+  }

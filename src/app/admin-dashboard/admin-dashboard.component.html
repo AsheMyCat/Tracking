@@ -1,7 +1,17 @@
+<div>
+    <input
+      type="text"
+      class="mySearch"
+      placeholder="Search..."
+      [(ngModel)]="filterTerm"
+    /></div>
+
 <table id = "users" >
     <thead>
         <tr>
             <th scope = "col">#</th>
+            <th scope = "col">Email Address</th>
+            <th scope = "col">PWD ID</th>
             <th scope = "col">Surname</th>
             <th scope = "col">First Name</th>
             <th scope = "col">Middle Name</th>
@@ -13,12 +23,13 @@
             <th scope = "col">Sex</th>
             <th scope = "col">Civil Status</th>
             <th scope = "col">Type of Disability</th>
-            <th scope = "col">Email Address</th>
         </tr>
     </thead>
 <tbody>
-    <tr *ngFor = "let users of User; let i = index">
+    <tr *ngFor = "let users of User | filter: filterTerm; let i = index">
         <th scope = "row">{{i + 1}}</th>
+        <td>{{ users.Email_Lower }}</td>
+        <td>{{ users.PWD }}</td>   
         <td>{{ users.Surname }}</td>
         <td>{{ users.First_Name }}</td>
         <td>{{ users.Middle_Name }}</td>
@@ -30,5 +41,4 @@
         <td>{{ users.Sex }}</td>
         <td>{{ users.Civil_Status }}</td>
         <td>{{ users.Type_of_Disability }}</td>
-        <td>{{ users.Email_Lower }}</td>  
 </table>

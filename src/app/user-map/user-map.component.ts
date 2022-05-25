@@ -18,6 +18,9 @@ export class UserMapComponent implements OnInit {
   y!: any;
   ll!:any;
   wp: any;
+  h:any;
+  i:any;
+
   constructor(private afs: AngularFirestore, public firebaseAuth: AngularFireAuth, public authService: AuthService,
     dialog: MatDialog) { }
 
@@ -82,6 +85,14 @@ export class UserMapComponent implements OnInit {
           .doc(emailLower)
           .collection('location').doc(emailLower)
           .set({
+            'Name': this.afs.collection('users').get().toPromise().then(async (querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                const info: any = doc.data();
+               // this.h = info.Surname
+               // this.i = info.First_Name
+                this.h = [info.Surname, info.First_Name, info.TimeLog]
+              })
+            }) ,
             'Coordinates': " " + this.latlong,
             'Latitude':  this.x,
             'Longitude':  this.y,
