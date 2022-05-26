@@ -58,6 +58,7 @@ p {
 
 .clr{
     background-color: rgba(237, 245, 250, 0.808);
+    object-fit: cover;
 }
 
 mat-icon {

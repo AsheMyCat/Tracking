@@ -1,10 +1,10 @@
 import { Component, OnInit} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import {  Subject, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { User } from '../services/user.model';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Location } from '../services/location.model'
 
 
 @Component({
@@ -16,7 +16,11 @@ export class AdminDashboardComponent implements OnInit {
 
   user: Observable<any>; 
   User: User[];
+  Location: Location[]
   filterTerm!: string;
+  locationCollection:any;
+  locationInfo:any;
+  locC:any;
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private authService: AuthService) { 
     this.user = null;
   }
@@ -38,6 +42,14 @@ export class AdminDashboardComponent implements OnInit {
     })
   });
 
+  this.authService.getUserLocation().subscribe(res => {
+    this.Location = res.map ( e => {
+      return{
+        id: e.payload.doc.id,
+        ...e.payload.doc.data() as {}
+      } as Location;
+    })
+  });
   
   //End of NgOninit
   }

@@ -2,9 +2,7 @@
     <input
       type="text"
       class="mySearch"
-      placeholder="Search..."
-      [(ngModel)]="filterTerm"
-    /></div>
+      placeholder="Search..." [(ngModel)]="filterTerm"/></div>
 
 <table id = "users" >
     <thead>
@@ -24,6 +22,7 @@
             <th scope = "col">Civil Status</th>
             <th scope = "col">Type of Disability</th>
         </tr>
+        
     </thead>
 <tbody>
     <tr *ngFor = "let users of User | filter: filterTerm; let i = index">

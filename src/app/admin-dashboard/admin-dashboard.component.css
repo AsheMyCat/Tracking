@@ -51,8 +51,12 @@
   }
 
   .mySearch {
-    width: 100%;
+    width: 40%;
     font-size: 18px;
     padding: 11px;
     border: 1px solid #ddd;
+    height: 30%;
+    margin-left: 28%;
+    margin-top: 2%;
+    margin-bottom: 2%;
   }

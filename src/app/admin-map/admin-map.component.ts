@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import * as geojson from 'geojson';
+import { AuthService } from '../services/auth.service';
+import { Location } from '../services/location.model'
 declare const L: any;
 @Component({
   selector: 'app-admin-map',
@@ -18,7 +20,10 @@ export class AdminMapComponent implements OnInit {
   z: any;
   myArray: []
   getLabel: any;
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
+  userDetails: []
+  Location: Location[]
+  
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private authService: AuthService) {
     this.user = null;
 
   }
@@ -34,26 +39,17 @@ export class AdminMapComponent implements OnInit {
     if (!navigator.geolocation) {
       console.log('Location is not Supported');
     }
-    /*  navigator.geolocation.getCurrentPosition((position) => {
-         
-        const coords = position.coords;
-        const lat = coords.latitude;
-        const long = coords.longitude;
-        const latLong = [coords.latitude, coords.longitude]; //Mag kasamang lat at long
-        console.log (
-           `lat: ${position.coords.latitude}, long: ${position.coords.longitude}`
-        ); */
 
-    /* let userLocationData: any = await getLocationData(this.afs);
+  /*   let userLocationData: any = await getLocationData(this.afs);
      let filteredUserLocationData = userLocationData.filter(
        (e) => Object.keys(e).length !== 0
-     );*/
+     );
 
-    /*  setInterval(async () => {
+      setInterval(async () => {
         userLocationData = await getLocationData(this.afs);
-      }, 1000);*/
+      }, 1000);
 
-    /*  const latlng = [
+      const latlng = [
         filteredUserLocationData[0].Latitude,
         filteredUserLocationData[0].Longitude,
       ];*/
@@ -67,14 +63,16 @@ export class AdminMapComponent implements OnInit {
       zoomOffset: -1,
       accessToken: 'your.mapbox.access.token'
     }).addTo(mymap);
-
-    /*  filteredUserLocationData.forEach((e) => {
+    setInterval(L.map, 5000);
+    
+     // setInterval(mymap, 1000);
+     /* filteredUserLocationData.forEach((e) => {
         const latLng = [e.Latitude, e.Longitude];
-        const info = [e.Surname, e.Last_Name];
-        this.a = info;
+      //  const info = [e.Surname, e.Last_Name];
+      //  this.a = info;
         L.marker(latLng)
           .addTo(mymap)
-          .bindTooltip( 'this.a',
+          .bindTooltip( '',
            {
             permanent: false,
             direction: 'top',
@@ -83,7 +81,7 @@ export class AdminMapComponent implements OnInit {
       });*/
 
 
-    this.afs.collectionGroup('location')
+   this.afs.collectionGroup('location')
       //.collection('users')
       .get()
       .toPromise()
@@ -100,11 +98,9 @@ export class AdminMapComponent implements OnInit {
               coordinates: [read.Latitude, read.Longitude],
             };
             console.log("geo", geojsonPoint2)
-
+           // alert('A user wants to be tracked!')
             L.geoJSON(geojsonPoint2).addTo(mymap);
-
-            //Thank You so much!!!
-
+            setInterval(L.geoJSON, 1000);
 
             //fetch user_details
             const user_name = await this.afs.collection('users').doc(email).get().toPromise().then(async (querySnapshot) => {
@@ -112,7 +108,8 @@ export class AdminMapComponent implements OnInit {
               console.log("user_details", user_details)
               return user_details;
             });
-            console.log("a", user_name.First_Name + " " + user_name.Surname)
+            
+            //console.log("a", user_name.First_Name + " " + user_name.Surname)
             const user_time = await this.afs.collection('users').doc(email).collection('location').doc(email)
             .get().toPromise().then(async (querySnapshot) => {
               const user_time: any = querySnapshot.data();
@@ -120,12 +117,14 @@ export class AdminMapComponent implements OnInit {
               return user_time;
             });
 
+            setInterval(L.marker, 5000);
             if (user_name) {
               let marker2 = L.marker(geojsonPoint2.coordinates).addTo(mymap);
               marker2.bindPopup(
-                "User: " + user_name.First_Name + " " + user_name.Surname +"<br>"+ "Time: " + user_time.TimeLog.toDate(),
+                "User: " + user_name.First_Name + " " + user_name.Surname +"<br>"+ "Time: " + user_time.TimeLog.toDate() 
+                + "<br>",
                 { autoClose: false })
-                //.openPopup('');
+                .openPopup('');
             }
 
           }
@@ -133,12 +132,44 @@ export class AdminMapComponent implements OnInit {
       });
     //    })
 
+
+    this.authService.getUserLocation().subscribe(res => {
+      this.Location = res.map ( e => {
+        return{
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as {}
+        } as Location;
+      })
+    }); console.log("loation", Location)
+   
     //End of NgOnInit
+
   }
 
+  onclick(){
+      this.afAuth.authState.subscribe(user => {
+        console.log('Deleting Confirmed Tracked Users', user);
+  
+        if (user) {
+            let emailLower = user.email.toLowerCase();
+             this.afs
+            .collection('users')
+            .doc(emailLower)
+            .collection('location').doc(emailLower)
+            .delete();
+        }
+      });
+    }
+
+  userLoc(){
+    this.afs.collectionGroup('location').snapshotChanges()
+    }
+  
+
 }
-/*
-const getLocationData = async (afs: any) => {
+
+
+/*const getLocationData = async (afs: any) => {
 
   return new Promise(async (resolve, reject) => {
     try {

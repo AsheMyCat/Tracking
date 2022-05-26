@@ -1,11 +1,10 @@
 import { AnimationDriver } from '@angular/animations/browser';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FirebaseApp } from '@angular/fire/app/firebase';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { of as observableOf } from 'rxjs';
-import { map } from 'rxjs/operators'; 
+import {  Observable } from 'rxjs'; 
 import { __values } from 'tslib';
 import { User } from './user.model';
 
@@ -21,6 +20,7 @@ export class AuthService {
     userLoggedIn: boolean;      // other components can check on this variable for the login status of the user
     adminLoggedIn: boolean;
     array = [];
+    firebase: any;
     constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore) {
         this.userLoggedIn = false;
         this.user = null;
@@ -254,6 +254,18 @@ export class AuthService {
           .collection("users")
           .snapshotChanges()
       }
+    
+      getUserLocation() {
+        /* this.afs.collection('users').get().toPromise().then(async (querySnapshot) => {
+            querySnapshot.forEach(async (doc) => {
+            const email = doc.id;
+            return this.afs.collection('users').doc(email).collection('location')
+            .snapshotChanges()
+            })//1st querysnapshot
+        })*/
+        return this.afs.collectionGroup('location')
+       .snapshotChanges()
+    }
 
     deleteUser(email){
         let user = this.afs.collection('users', ref => ref.where('Email_Lower', '==', email));
@@ -262,12 +274,7 @@ export class AuthService {
                 doc.ref.delete();
             });
         });
-        // this.afAuth.authState.subscribe(user => {
-        //     if (user) {
-        //         let emailLower = user.email.toLowerCase();
-        //         this.afs.firestore.collection('users').doc(emailLower).delete();
-        //     }
-    //})
+   
     }
 
     updateUser(user: User, email){
@@ -294,6 +301,12 @@ export class AuthService {
         })
     });
 });
+    }
+    
+    onQuery(){
+        this.afs.collection('location', ref => ref.where('TimeLog', '==', 'TimeLog')
+       
+        )
     }
     
 }

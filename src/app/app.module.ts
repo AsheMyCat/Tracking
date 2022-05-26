@@ -74,6 +74,8 @@ import { StormComponent } from './storm/storm.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SearchComponent } from './search/search.component';
 
+import {PlatformModule} from '@angular/cdk/platform';
+import {LayoutModule} from '@angular/cdk/layout';
 
 
 
@@ -104,6 +106,7 @@ import { SearchComponent } from './search/search.component';
     EarthComponent,
     StormComponent,
     SearchComponent,
+
 
    
   ],
@@ -162,6 +165,9 @@ import { SearchComponent } from './search/search.component';
           registrationStrategy: 'registerWhenStable:30000'
         }),
         Ng2SearchPipeModule,
+        PlatformModule,
+        LayoutModule,
+        
        
   ],
   providers: [],
