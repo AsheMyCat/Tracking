@@ -76,6 +76,9 @@ import { SearchComponent } from './search/search.component';
 
 import {PlatformModule} from '@angular/cdk/platform';
 import {LayoutModule} from '@angular/cdk/layout';
+//import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AsyncPipe } from '../../node_modules/@angular/common';
+
 
 
 
@@ -117,6 +120,7 @@ import {LayoutModule} from '@angular/cdk/layout';
     AngularFirestoreModule,                                 // imports firebase/firestore, only needed for database features
         // AngularFireStorageModule,                               // imports firebase/storage only needed for storage features
     AngularFireDatabaseModule,
+    
 
         MatAutocompleteModule,
         MatBadgeModule,
@@ -167,6 +171,8 @@ import {LayoutModule} from '@angular/cdk/layout';
         Ng2SearchPipeModule,
         PlatformModule,
         LayoutModule,
+      //  AngularFireMessagingModule,
+        
         
        
   ],

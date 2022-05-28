@@ -277,6 +277,17 @@ export class AuthService {
    
     }
 
+    deleteLocation(email){
+       // let emailLower = user.email.toLowerCase()
+        let users = this.afs.collectionGroup('location', ref => ref.where('Email_Lower', '==', email).orderBy("TimeLog"));
+        users.get().forEach(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                doc.ref.delete();
+            });
+        });
+   
+    }
+
     updateUser(user: User, email){
         let users = this.afs.collection('users', ref => ref.where('Email_Lower', '==', email));
         users.get().forEach(function(querySnapshot) {

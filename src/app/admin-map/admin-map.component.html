@@ -1,3 +1,41 @@
-<div id="map1" class = "map"></div>
+<div id="map1" class="map"></div>
+<div class="container">
+    <div>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <input type="text" class="Search" placeholder="Search..." [(ngModel)]="filterTerm" />
+                            </div>
 
-    
+                            <table id="users">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Email Address</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">TimeLog</th>
+                                        <th scope="col"></th>
+
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let loc of Location| filter: filterTerm; let i = index">
+                                        <th scope="row">{{i + 1}}</th>
+                                        <td>{{ loc.Email_Lower }}</td>
+                                        <td>Lat:{{ loc.Latitude}}, Lat:{{ loc.Longitude}} </td>
+                                        <td>{{ loc.TimeLog.toDate() }}</td>
+                                        <td>
+                                            <button class="button1" (click)="dell(loc.Email_Lower)">Confirm</button>
+                                        </td>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

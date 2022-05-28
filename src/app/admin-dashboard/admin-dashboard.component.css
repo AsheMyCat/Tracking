@@ -29,8 +29,10 @@
 #users {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 90%;
     background-color: rgb(218, 243, 255);
+    margin-left: 5%;
+    
   }
   
   #users td, #users th {
@@ -59,4 +61,5 @@
     margin-left: 28%;
     margin-top: 2%;
     margin-bottom: 2%;
+    background-color: rgb(206, 211, 211);
   }

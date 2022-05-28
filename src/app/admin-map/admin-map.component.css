@@ -34,3 +34,58 @@ mat-card{
     margin-bottom: -2%;
 
 }
+
+
+  #users {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 85%;
+    background-color: rgb(218, 243, 255);
+    margin-left: 8%;
+    
+  }
+  
+  #users td, #users th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #users tr:nth-child(even){background-color: #f4f1fd;}
+  
+  #users tr:hover {background-color: #ddd;}
+  
+  #users th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .Search {
+    width: 35%;
+    font-size: 18px;
+    padding: 11px;
+    border: 0.5px solid rgba(255, 252, 252, 0.575);
+    height: 30%;
+    margin-left: 35%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: rgb(206, 211, 211);
+  }
+
+  .button1 {
+    transition-duration: 0.4s;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-left: 10%;
+    
+  }
+  
+  .button1:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+  
+  

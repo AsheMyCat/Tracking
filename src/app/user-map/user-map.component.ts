@@ -20,6 +20,7 @@ export class UserMapComponent implements OnInit {
   wp: any;
   h:any;
   i:any;
+  p:any;
 
   constructor(private afs: AngularFirestore, public firebaseAuth: AngularFireAuth, public authService: AuthService,
     dialog: MatDialog) { }
@@ -75,6 +76,7 @@ export class UserMapComponent implements OnInit {
   addSub(){
     this.firebaseAuth.authState.subscribe(user => {
       console.log('Adding Location Works', user);
+      
 
       if (user) {
           let emailLower = user.email.toLowerCase();
@@ -83,7 +85,7 @@ export class UserMapComponent implements OnInit {
           .doc(emailLower)
           .collection('location').doc(emailLower)
           .set({
-            'Email_Address': user.email.toLowerCase(),
+            'Email_Lower': user.email.toLowerCase(),
             'Coordinates': " " + this.latlong,
             'Latitude':  this.x,
             'Longitude':  this.y,
@@ -99,7 +101,7 @@ export class UserMapComponent implements OnInit {
           .collection('history')
           .doc(uid)
           .set({
-            'Email_Address': user.email.toLowerCase(),
+            'Email_Lower': user.email.toLowerCase(),
             'Coordinates': " " + this.latlong,
             'Latitude':  this.x,
             'Longitude':  this.y,
@@ -108,6 +110,7 @@ export class UserMapComponent implements OnInit {
           })
       }
     });
+  
     alert("You have successfully turned on your share location")
   }
 
