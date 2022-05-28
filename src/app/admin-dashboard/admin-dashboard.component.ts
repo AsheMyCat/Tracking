@@ -50,6 +50,25 @@ export class AdminDashboardComponent implements OnInit {
       } as Location;
     })
   });
+
+  this.afs.firestore.collectionGroup('location')
+    .onSnapshot((snapshotChanges) => {
+      snapshotChanges.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          console.log("New Location: ", change.doc.data());
+          alert("Someone wants to be tracked!")
+        }
+        if (change.type === "modified") {
+          console.log("Updated Location: ", change.doc.data());
+          alert("Someone updated their location!")
+        }
+        if (change.type === "removed") {
+          console.log("Removed Location: ", change.doc.data());
+          alert("The user is rescued/received help!")
+      }
+      });
+    });
+
   
   //End of NgOninit
   }
@@ -64,6 +83,8 @@ export class AdminDashboardComponent implements OnInit {
     });
 
 }
+
+
 
 del(email){
   this.authService.deleteUser(email);

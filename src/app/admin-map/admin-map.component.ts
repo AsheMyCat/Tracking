@@ -39,10 +39,31 @@ export class AdminMapComponent implements OnInit {
       if (user) {
         let emailLower = user.email.toLowerCase();
         this.user = this.afs.collection('users').doc(emailLower).valueChanges();      // get the user's doc in Cloud Firestore
-      }
+          if (user){
+            this.afs.collection('user', ref => ref.where('accountType', '==', 'Admin'));
+            let q = this.afs.firestore.collectionGroup('location')
+            .onSnapshot((snapshotChanges) => {
+              snapshotChanges.docChanges().forEach((change) => {
+                if (change.type === "added") {
+                  console.log("New Location: ", change.doc.data());
+                  alert("Someone wants to be tracked!")
+                }
+                if (change.type === "modified") {
+                  console.log("Updated Location: ", change.doc.data());
+                  alert("Someone updated their location!")
+                }
+                if (change.type === "removed") {
+                  console.log("Removed Location: ", change.doc.data());
+                  alert("The user is rescued/received help!")
+              }
+              });
+            });
+            return q;
+          }
+      } 
     });
 
-    this.afs.firestore.collectionGroup('location')
+  /*  this.afs.firestore.collectionGroup('location')
     .onSnapshot((snapshotChanges) => {
       snapshotChanges.docChanges().forEach((change) => {
         if (change.type === "added") {
@@ -58,7 +79,7 @@ export class AdminMapComponent implements OnInit {
           alert("The user is rescued/received help!")
       }
       });
-    });
+    });*/
 
     this.authService.getUserLocation().subscribe(res => {
       this.Location = res.map ( e => {
