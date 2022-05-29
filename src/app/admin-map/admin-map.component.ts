@@ -323,6 +323,7 @@ export class AdminMapComponent implements OnInit {
             'Status': 'Confirmed',
             'TimeLog': this.authService.timestamp
           })
+          this.authService.deleteLocation(email);
           console.log("save info")
          // alert('ay mag save kana hahaha')
       } 
