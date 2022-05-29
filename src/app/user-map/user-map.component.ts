@@ -141,7 +141,7 @@ export class UserMapComponent implements OnInit {
           console.log(user_details)
           this.cb = [user_details.First_Name +" " +  user_details.Surname];
           user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
-          .collection('confirmed').doc(emailLower)
+          .collection('confirmed').doc(uid)
           .set({
             'Name': this.cb, 
             'Email_Lower': user.email.toLowerCase(),
