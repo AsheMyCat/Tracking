@@ -102,7 +102,7 @@ export class UserMapComponent implements OnInit {
           // .collection('users')
           // .doc(emailLower)
 
-          user_doc//.collection('location').doc(emailLower)
+          user_doc.collection('location').doc(emailLower)
           .collection('history')
           .doc(uid)
           .set({
@@ -140,12 +140,14 @@ export class UserMapComponent implements OnInit {
           let uid = this.afs.createId();
           console.log(user_details)
           this.cb = [user_details.First_Name +" " +  user_details.Surname];
-          user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
-          .collection('confirmed').doc(uid)
+         // user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
+          this.afs.collection('users')
+          .doc(emailLower)
+         .collection('confirmed').doc(uid)
           .set({
             'Name': this.cb, 
             'Email_Lower': user.email.toLowerCase(),
-            //'Coordinates': " " + this.latlong,
+            'Coordinates': " " + this.latlong,
             'Latitude':  this.x,
             'Longitude':  this.y,
             'Status': 'Confirmed',

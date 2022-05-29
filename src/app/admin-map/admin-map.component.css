@@ -103,10 +103,10 @@ mat-card{
 
   .button1 {
     transition-duration: 0.4s;
-    padding: 10px 24px;
+    padding: 5px 12px;
     border-radius: 4px;
     font-size: 15px;
-    margin-left: 10%;
+    margin-left: 2%;
     
   }
   
@@ -115,4 +115,7 @@ mat-card{
     color: white;
   }
   
-  
+  p {
+    font-size: x-large;
+    text-align: center;
+  }

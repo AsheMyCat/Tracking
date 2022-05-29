@@ -2,6 +2,7 @@ import { AnimationDriver } from '@angular/animations/browser';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FirebaseApp } from '@angular/fire/app/firebase';
 import { Router } from '@angular/router';
 import {  Observable } from 'rxjs'; 
 import { __values } from 'tslib';
@@ -20,6 +21,7 @@ export class AuthService {
     adminLoggedIn: boolean;
     array = [];
     firebase: any;
+    cb:any;
     constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore) {
         this.userLoggedIn = false;
         this.user = null;
@@ -254,6 +256,9 @@ export class AuthService {
           .snapshotChanges()
       }
     
+      getConfirm(){
+          return this.afs.collectionGroup('confirmed').snapshotChanges()
+      }
       getUserLocation() {
         /* this.afs.collection('users').get().toPromise().then(async (querySnapshot) => {
             querySnapshot.forEach(async (doc) => {
@@ -266,16 +271,12 @@ export class AuthService {
        .snapshotChanges()
     }
 
-    getConfirm(){
-        return this.afs.collectionGroup('confirmed')
-        .snapshotChanges()
-    }
-
     deleteUser(email){
         let user = this.afs.collection('users', ref => ref.where('Email_Lower', '==', email));
         user.get().forEach(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 doc.ref.delete();
+                
             });
         });
    
@@ -287,10 +288,40 @@ export class AuthService {
         users.get().forEach(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 doc.ref.delete();
+                this.save()
             });
         });
    
     }
+
+    async save(email){
+
+        let user = this.afs.collection('users', ref => ref.where('Email_Lower', '==', email));
+         
+              const user_doc = this.afs.collection('users').doc(email);
+              const user_details:any = await user_doc.get().toPromise().then((querySnapshot) => {
+                return querySnapshot.data()
+              });
+              let uid = this.afs.createId();
+              console.log("creating confirmed",user_details)
+              this.cb = [user_details.First_Name +" " +  user_details.Surname];
+              //user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
+              this.afs.collection('users').doc(email)
+              .collection('confirmed').doc(uid)
+              .set({
+                'Name': this.cb, 
+                'Email_Lower': email.toLowerCase(),
+                //'Coordinates': " " + this.latlong,
+                //'Latitude':  this.x,
+               // 'Longitude':  this.y,
+                'Status': 'Confirmed',
+                'TimeLog': this.timestamp
+              })
+              console.log("save info")
+              alert('ay mag save kana hahaha')
+          } 
+      
+      
 
     updateUser(user: User, email){
         let users = this.afs.collection('users', ref => ref.where('Email_Lower', '==', email));

@@ -7,6 +7,7 @@ import { AuthService } from '../services/auth.service';
 import { Location } from '../services/location.model'
 import { User } from '../services/user.model';
 import { Confirmed } from '../services/confirmed.model';
+import { async } from '@firebase/util';
 
 
 declare const L: any;
@@ -227,26 +228,28 @@ export class AdminMapComponent implements OnInit {
   
 
   del(){
-      this.afAuth.authState.subscribe(async user => {
-        console.log('Deleting Confirmed Tracked Users', user);
-  
-        if (user) {
-            let emailLower = user.email.toLowerCase();
-             this.afs
-            .collection('users')
-            .doc(emailLower)
-            .collection('location').doc(emailLower)
-            .delete()
+    this.afAuth.authState.subscribe(async user => {
+      console.log('Deleting Current Location Works', user);
 
-            const user_doc = this.afs.collection('users').doc(emailLower);
-            const user_details:any = await user_doc.get().toPromise().then((querySnapshot) => {
-              return querySnapshot.data()
-            });
+      if (user) {
+          let emailLower = user.email.toLowerCase();
+           this.afs
+          .collection('users')
+          .doc(emailLower)
+          .collection('location').doc(emailLower)
+          .delete();
+
+         // let emailLower = user.email.toLowerCase();
+          const user_doc = this.afs.collection('users').doc(emailLower);
+          const user_details:any = await user_doc.get().toPromise().then((querySnapshot) => {
+            return querySnapshot.data()
+          });
           let uid = this.afs.createId();
-          console.log(user_details)
+          console.log("creating confirmed",user_details)
           this.cb = [user_details.First_Name +" " +  user_details.Surname];
-          user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
-          .collection('confirmed').doc(uid)
+          //user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
+          this.afs.collection('users').doc(emailLower)
+          .collection('confirmed').doc()
           .set({
             'Name': this.cb, 
             'Email_Lower': user.email.toLowerCase(),
@@ -256,12 +259,11 @@ export class AdminMapComponent implements OnInit {
             'Status': 'Confirmed',
             'TimeLog': this.authService.timestamp
           })
-            
-        }
-      });
+      }
+    });
     }
 
-    deleteLocation(email){
+ /*   deleteLocation(email){
       let user = this.afs.collection('location', ref => ref.where('Email_Lower', '==', email));
       user.get().forEach(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
@@ -269,16 +271,64 @@ export class AdminMapComponent implements OnInit {
           });
       });
  
-  }
+  }*/
   
   dell(email){
+    this.afAuth.authState.subscribe(async user => {
+      console.log('Deleting Current Location Works', user);
+
+      if (user) {
+         let emailLower = user.email.toLowerCase();
+          const user_doc = this.afs.collection('users').doc(emailLower);
+          const user_details:any = await user_doc.get().toPromise().then((querySnapshot) => {
+            return querySnapshot.data()
+          });
+          let uid = this.afs.createId();
+          console.log("creating confirmed",user_details)
+          this.cb = [user_details.First_Name +" " +  user_details.Surname];
+          //user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
+          this.afs.collection('users').doc(emailLower)
+          .collection('confirmed').doc()
+          .set({
+            'Name': this.cb, 
+            'Email_Lower': user.email.toLowerCase(),
+            //'Coordinates': " " + this.latlong,
+            'Latitude':  this.x,
+            'Longitude':  this.y,
+            'Status': 'Confirmed',
+            'TimeLog': this.authService.timestamp
+          })
+      }
+    });
     this.authService.deleteLocation(email);
   }
 
+  async save(email){
+
+    let user = this.afs.collection('users', ref => ref.where('Email_Lower', '==', email));
+     
+          const user_doc = this.afs.collection('users').doc(email);
+          const user_details:any = await user_doc.get().toPromise().then((querySnapshot) => {
+            return querySnapshot.data()
+          });
+          let uid = this.afs.createId();
+          console.log("creating confirmed",user_details)
+          this.cb = [user_details.First_Name +" " +  user_details.Surname];
+          //user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
+          this.afs.collection('users').doc(email)
+          .collection('confirmed').doc(uid)
+          .set({
+            'Name': this.cb, 
+            'Email_Lower': email.toLowerCase(),
+            'Status': 'Confirmed',
+            'TimeLog': this.authService.timestamp
+          })
+          console.log("save info")
+         // alert('ay mag save kana hahaha')
+      } 
+  
+  
 }
-
-
-
 
 /*const getLocationData = async (afs: any) => {
 

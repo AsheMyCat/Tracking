@@ -9,7 +9,7 @@
                             <div>
                                 <input type="text" class="Search" placeholder="Search..." [(ngModel)]="filterTerm" />
                             </div>
-
+                            
                             <table id="users">
                                 <thead>
                                     <tr>
@@ -32,10 +32,12 @@
                                         <td>{{ loc.TimeLog.toDate() }}</td>
                                         <td>
                                             <button class="button1" (click)="dell(loc.Email_Lower)">Confirm</button>
+                                            <button class="button1" (click)="save(loc.Email_Lower)">Save</button>
                                         </td>
                             </table>
                             <br>
                             <br>
+                            <p><b>Tracked</b></p>
                             <table id="users">
                                 <thead>
                                     <tr>
