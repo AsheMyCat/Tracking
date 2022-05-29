@@ -21,7 +21,7 @@ export class UserMapComponent implements OnInit {
   h:any;
   i:any;
   p:any;
-
+  cb:any;
   constructor(private afs: AngularFirestore, public firebaseAuth: AngularFireAuth, public authService: AuthService,
     dialog: MatDialog) { }
 
@@ -72,19 +72,23 @@ export class UserMapComponent implements OnInit {
    this.latlong;
 
   }
-
-  addSub(){
-    this.firebaseAuth.authState.subscribe(user => {
-      console.log('Adding Location Works', user);
-      
-
+  
+  async addSub(){
+    this.firebaseAuth.authState.subscribe(async user => {
       if (user) {
+          // this.afs.collection('users').get().toPromise().then(async (querySnapshot) => {
+            
+          // })
           let emailLower = user.email.toLowerCase();
-           this.afs
-          .collection('users')
-          .doc(emailLower)
-          .collection('location').doc(emailLower)
+          const user_doc = this.afs.collection('users').doc(emailLower);
+          const user_details:any = await user_doc.get().toPromise().then((querySnapshot) => {
+            return querySnapshot.data()
+          });
+          console.log(user_details)
+          this.cb = [user_details.First_Name +" " +  user_details.Surname];
+          user_doc.collection('location').doc(emailLower)
           .set({
+            'Name': this.cb, 
             'Email_Lower': user.email.toLowerCase(),
             'Coordinates': " " + this.latlong,
             'Latitude':  this.x,
@@ -94,13 +98,15 @@ export class UserMapComponent implements OnInit {
           })
           
           let uid = this.afs.createId();
-           this.afs
-          .collection('users')
-          .doc(emailLower)
-          .collection('location').doc(emailLower)
+          //  this.afs
+          // .collection('users')
+          // .doc(emailLower)
+
+          user_doc//.collection('location').doc(emailLower)
           .collection('history')
           .doc(uid)
           .set({
+            'Name': this.cb, 
             'Email_Lower': user.email.toLowerCase(),
             'Coordinates': " " + this.latlong,
             'Latitude':  this.x,
@@ -115,7 +121,7 @@ export class UserMapComponent implements OnInit {
   }
 
   delCoordinates(){
-    this.firebaseAuth.authState.subscribe(user => {
+    this.firebaseAuth.authState.subscribe(async user => {
       console.log('Deleting Current Location Works', user);
 
       if (user) {
@@ -125,7 +131,26 @@ export class UserMapComponent implements OnInit {
           .doc(emailLower)
           .collection('location').doc(emailLower)
           .delete();
-         
+
+         // let emailLower = user.email.toLowerCase();
+          const user_doc = this.afs.collection('users').doc(emailLower);
+          const user_details:any = await user_doc.get().toPromise().then((querySnapshot) => {
+            return querySnapshot.data()
+          });
+          let uid = this.afs.createId();
+          console.log(user_details)
+          this.cb = [user_details.First_Name +" " +  user_details.Surname];
+          user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
+          .collection('confirmed').doc(emailLower)
+          .set({
+            'Name': this.cb, 
+            'Email_Lower': user.email.toLowerCase(),
+            //'Coordinates': " " + this.latlong,
+            'Latitude':  this.x,
+            'Longitude':  this.y,
+            'Status': 'Confirmed',
+            'TimeLog': this.authService.timestamp
+          })
       }
     });
     alert("You have turned off your share location")

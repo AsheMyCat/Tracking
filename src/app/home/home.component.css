@@ -3,3 +3,27 @@ mat-card{
     height:70%;
     width: 97.5%;
 }
+
+.banner{
+    background-image: url('../../assets/10.jpg');
+    height: 561px;
+    width:950px;
+    background-position: center;
+    background-size: cover;
+    margin-left: 17%;
+}
+
+.space{
+    padding: 12px;
+}
+
+
+@media screen and (max-width:600px) {
+    .banner{
+        background-image: url('../../assets/10.jpg');
+        height: 561px;
+        width:950px;
+        background-position: center;
+        background-size: cover;
+    }
+}

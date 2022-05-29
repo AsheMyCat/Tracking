@@ -36,6 +36,32 @@ mat-card{
 }
 
 
+  #users1 {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 85%;
+    background-color: rgb(218, 243, 255);
+    margin-left: 8%;
+    
+  }
+  
+  #users1 td, #users1 th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #users1 tr:nth-child(even){background-color: #f4f1fd;}
+  
+  #users1 tr:hover {background-color: #ddd;}
+  
+  #users1 th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+  }
+
   #users {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -62,11 +88,12 @@ mat-card{
     color: white;
   }
 
+
   .Search {
     width: 35%;
     font-size: 18px;
     padding: 11px;
-    border: 0.5px solid rgba(255, 252, 252, 0.575);
+    border: 1px solid rgba(255, 252, 252, 0.575);
     height: 30%;
     margin-left: 35%;
     margin-top: 2%;

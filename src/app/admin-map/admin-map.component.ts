@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import * as geojson from 'geojson';
 import { AuthService } from '../services/auth.service';
 import { Location } from '../services/location.model'
+import { User } from '../services/user.model';
+import { Confirmed } from '../services/confirmed.model';
 
 
 declare const L: any;
@@ -23,11 +25,14 @@ export class AdminMapComponent implements OnInit {
   myArray: []
   getLabel: any;
   userDetails: []
-  Location: Location[]
+  Location: Location[] = []
+  User: User[]
   locate:any;
   info:any;
   m:any;
   filterTerm!: string;
+  cb:any;
+  Confirmed: Confirmed[]
     constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private authService: AuthService,
       private renderer:Renderer2, private el:ElementRef) {
     this.user = null;
@@ -46,7 +51,7 @@ export class AdminMapComponent implements OnInit {
               snapshotChanges.docChanges().forEach((change) => {
                 if (change.type === "added") {
                   console.log("New Location: ", change.doc.data());
-                  alert("Someone wants to be tracked!")
+                  alert("Someone wants to be tracked! ")
                 }
                 if (change.type === "modified") {
                   console.log("Updated Location: ", change.doc.data());
@@ -81,12 +86,30 @@ export class AdminMapComponent implements OnInit {
       });
     });*/
 
-    this.authService.getUserLocation().subscribe(res => {
-      this.Location = res.map ( e => {
+    this.authService.getUserList().subscribe(res => {
+      this.User = res.map ( e => {
         return{
           id: e.payload.doc.id,
           ...e.payload.doc.data() as {}
-        } as Location;
+        } as User;
+      })
+    });
+
+     this.authService.getUserLocation().subscribe(res => {
+       this.Location = res.map ( e => {
+         return{
+           id: e.payload.doc.id,
+           ...e.payload.doc.data() as {}
+         } as Location;
+       })
+     });
+
+     this.authService.getConfirm().subscribe(res => {
+      this.Confirmed = res.map ( e => {
+        return{
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as {}
+        } as Confirmed;
       })
     });
    
@@ -168,20 +191,16 @@ export class AdminMapComponent implements OnInit {
               return user_details;
             });
 
-            
-            console.log("a", user_name)
             const user_time = await this.afs.collection('users').doc(email).collection('location').doc(email)
             .get().toPromise().then(async (querySnapshot) => {
               const user_time: any = querySnapshot.data();
+
              // console.log("user_time", user_time)
               return user_time;
             });
-              //button
-             
 
             console.log("popupinfo")
 
-          //  setInterval(L.marker, 1000);
             if (user_name) {
             let marker2 = L.marker(geojsonPoint2.coordinates).addTo(mymap);
           
@@ -189,33 +208,18 @@ export class AdminMapComponent implements OnInit {
                "User: <b>" + user_name.First_Name + " " + user_name.Surname +"</b><br>"+ "Email: <b>" + user_name.email +"<br>" +"</b> Time: " + user_time.TimeLog.toDate() 
                 + "<br>" , 
                 { autoClose: false })
-                .openPopup('');
-                
-               
+               // .openPopup('');
 
+                /** TEST CODE */
+               /* const new_location:Location = user_time;
+                new_location.Username = user_name.First_Name + " " + user_name.Surname;
+                this.Location.push(new_location);*/
             }
           }
-        });
+        });//AFS
       });
     //    })
-       
 
-    function myFunction() {
-      document.getElementById("delete")
-      this.afAuth.authState.subscribe(user => {
-        console.log('Deleting Confirmed Tracked Users', user);
-  
-        if (user) {
-            let emailLower = user.email.toLowerCase();
-             this.afs
-            .collection('users')
-            .doc(emailLower)
-            .collection('location').doc(emailLower)
-            .delete();
-        }
-      });
-    }
-   
     //End of NgOnInit
 
   }
@@ -223,7 +227,7 @@ export class AdminMapComponent implements OnInit {
   
 
   del(){
-      this.afAuth.authState.subscribe(user => {
+      this.afAuth.authState.subscribe(async user => {
         console.log('Deleting Confirmed Tracked Users', user);
   
         if (user) {
@@ -233,6 +237,25 @@ export class AdminMapComponent implements OnInit {
             .doc(emailLower)
             .collection('location').doc(emailLower)
             .delete()
+
+            const user_doc = this.afs.collection('users').doc(emailLower);
+            const user_details:any = await user_doc.get().toPromise().then((querySnapshot) => {
+              return querySnapshot.data()
+            });
+          let uid = this.afs.createId();
+          console.log(user_details)
+          this.cb = [user_details.First_Name +" " +  user_details.Surname];
+          user_doc//.collection('users').doc(emailLower).collection('location').doc(emailLower).collection('history').doc(uid)
+          .collection('confirmed').doc(emailLower)
+          .set({
+            'Name': this.cb, 
+            'Email_Lower': user.email.toLowerCase(),
+            //'Coordinates': " " + this.latlong,
+            'Latitude':  this.x,
+            'Longitude':  this.y,
+            'Status': 'Confirmed',
+            'TimeLog': this.authService.timestamp
+          })
             
         }
       });

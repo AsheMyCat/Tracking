@@ -2,7 +2,6 @@ import { AnimationDriver } from '@angular/animations/browser';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FirebaseApp } from '@angular/fire/app/firebase';
 import { Router } from '@angular/router';
 import {  Observable } from 'rxjs'; 
 import { __values } from 'tslib';
@@ -265,6 +264,11 @@ export class AuthService {
         })*/
         return this.afs.collectionGroup('location')
        .snapshotChanges()
+    }
+
+    getConfirm(){
+        return this.afs.collectionGroup('confirmed')
+        .snapshotChanges()
     }
 
     deleteUser(email){

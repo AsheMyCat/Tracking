@@ -69,5 +69,7 @@ mat-icon {
 mat-toolbar{
     box-shadow: 1px;
     box-shadow: inset;
-    opacity: 3px;;
+    opacity: 3px;
+    width: 100%;
+    position: relative;
 }

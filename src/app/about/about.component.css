@@ -3,3 +3,7 @@ mat-card{
     height:70%;
     width: 97.5%;
 }
+
+.banner {
+    background-image: url(../../assets/about.jpg);
+}
