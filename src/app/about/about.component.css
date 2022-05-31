@@ -5,5 +5,18 @@ mat-card{
 }
 
 .banner {
-    background-image: url(../../assets/about.jpg);
+    background-image: url('../../assets/about.jpg');
+    height: 593px;
+    width: 1364px;
+    background-position: 2%;
+    background-size: cover;
+}
+
+@media screen and (max-width:600px) {
+    .banner{
+        width: 600px;
+        height: 230px;
+        background-size: cover;
+  
+    }
 }

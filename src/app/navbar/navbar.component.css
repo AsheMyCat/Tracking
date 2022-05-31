@@ -59,6 +59,7 @@ p {
 .clr{
     background-color: rgba(237, 245, 250, 0.808);
     object-fit: cover;
+    width: 100%;
 }
 
 mat-icon {
@@ -72,4 +73,15 @@ mat-toolbar{
     opacity: 3px;
     width: 100%;
     position: relative;
+}
+
+@media screen and (max-width:600px) {
+    .clr{
+        width: 100%;
+    }
+
+    mat-toolbar{
+        width: 100%;
+    }
+    
 }

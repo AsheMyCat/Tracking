@@ -288,7 +288,6 @@ export class AuthService {
         users.get().forEach(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 doc.ref.delete();
-                this.save()
             });
         });
    

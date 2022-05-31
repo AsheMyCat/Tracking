@@ -1,11 +1,11 @@
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-disaster',
-  templateUrl: './disaster.component.html',
-  styleUrls: ['./disaster.component.css']
+  selector: 'app-fire',
+  templateUrl: './fire.component.html',
+  styleUrls: ['./fire.component.css']
 })
-export class DisasterComponent implements AfterViewInit {
+export class FireComponent implements AfterViewInit {
 
   @ViewChild('videoPlayer') videoPlayer: ElementRef;
   dataLoaded = false;
@@ -25,5 +25,3 @@ export class DisasterComponent implements AfterViewInit {
     };
   }
   }
-
-

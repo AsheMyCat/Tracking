@@ -68,7 +68,6 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminMapComponent } from './admin-map/admin-map.component';
 import { UserMapComponent } from './user-map/user-map.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
-import { DisasterComponent } from './disaster/disaster.component';
 import { EarthComponent } from './earth/earth.component';
 import { StormComponent } from './storm/storm.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -78,6 +77,7 @@ import {PlatformModule} from '@angular/cdk/platform';
 import {LayoutModule} from '@angular/cdk/layout';
 //import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AsyncPipe } from '../../node_modules/@angular/common';
+import { FireComponent } from './fire/fire.component';
 
 
 
@@ -105,10 +105,10 @@ import { AsyncPipe } from '../../node_modules/@angular/common';
     AdminMapComponent,
     UserMapComponent,
     UserUpdateComponent,
-    DisasterComponent,
     EarthComponent,
     StormComponent,
     SearchComponent,
+    FireComponent,
 
 
    

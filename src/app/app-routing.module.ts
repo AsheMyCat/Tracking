@@ -19,7 +19,7 @@ import { AuthGuard } from './services/auth.guard';
 import { AdminMapComponent } from './admin-map/admin-map.component';
 import { UserMapComponent } from './user-map/user-map.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
-import { DisasterComponent } from './disaster/disaster.component';
+import { FireComponent } from './fire/fire.component';
 import { EarthComponent } from './earth/earth.component';
 import { StormComponent } from './storm/storm.component';
 import { AdminGuard } from './services/admin.guard';
@@ -44,7 +44,7 @@ const routes: Routes = [
   { path: 'admin-map', component: AdminMapComponent, canActivate: [AuthGuard]},
   { path: 'user-map', component: UserMapComponent, canActivate: [AuthGuard]},
   { path: 'user-update', component: UserUpdateComponent },
-  { path: 'fire', component: DisasterComponent },
+  { path: 'fire', component: FireComponent },
   { path: 'earth', component: EarthComponent },
   { path: 'storm', component: StormComponent },
   { path: '**', component: HomeComponent },        

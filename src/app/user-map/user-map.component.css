@@ -110,5 +110,56 @@ input[type=text] {
     transition: 0s
   }
 
+  @media screen and (max-width:600px) {
+    #map{
+      height: 70vh;
+      width: 75vh;
+      margin: auto;
+      margin-top: 1%;
+      border: 2px;
+      border-style: double;
+  }
 
+  .con{
+    margin-top: 2%;
+    margin-left: 0%;
+}
 
+  .button {
+    background-color: #04AA6D;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 2px;
+    width: 20%;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 5%;
+    margin-left: 27%;
+  }
+
+  .button1 {
+    position: relative;
+    background-color: #04AA6D;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 2px;
+    width: 20%;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 0.8%;
+    text-align: center;
+    margin-left: 2%;
+  }
+  
+
+  }

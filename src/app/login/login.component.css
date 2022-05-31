@@ -37,7 +37,7 @@ input[type=text], input[type=password] {
   }
 
   .container2 {
-    padding: 25px;
+    padding: 20px;
   }
 
   .child {
@@ -84,4 +84,44 @@ input[type=text], input[type=password] {
 .clr{
   background-color: rgba(86, 184, 241, 0.808);
   padding: 22px;
+}
+
+@media screen and (max-width:600px) {
+
+  .container2 {
+    padding: 20px;
+  }
+
+  mat-card {
+    /*position: absolute;*/
+    width: 70%;
+    object-position: center;
+    margin-top: 8%;
+    box-shadow: rgba(204, 175, 175, 0);
+    border: 2px;
+    margin-left: 11%;
+}
+
+.sign {
+  text-decoration: none;
+  font-size: 12px;
+  /* Center vertically */
+  color:rgb(51, 87, 245);
+  position: absolute;
+  top: 82%;
+  left: 53%;
+  margin-top: -21px; /* Half this element's height */
+}
+
+.fp{
+  text-decoration: none;
+  font-size: 12px;
+  /* Center vertically */
+  color:rgb(51, 87, 245);
+  position: absolute;
+  top: 82%;
+  left: 5%;
+  margin-top: -21px; /* Half this element's height */
+}
+
 }

@@ -5,25 +5,25 @@ mat-card{
 }
 
 .banner{
-    background-image: url('../../assets/10.jpg');
-    height: 561px;
-    width:950px;
-    background-position: center;
+    background-image: url('../../assets/9.png');
+    height: 593px;
+    width: 1355x;
+    background-position: 2%;
     background-size: cover;
-    margin-left: 17%;
+   
 }
 
 .space{
-    padding: 12px;
+    padding: 0.5px;
 }
 
 
 @media screen and (max-width:600px) {
     .banner{
-        background-image: url('../../assets/10.jpg');
-        height: 561px;
-        width:950px;
-        background-position: center;
+        background-image: url('../../assets/9.png');
+        width: 600px;
+        height: 210px;
         background-size: cover;
+  
     }
 }

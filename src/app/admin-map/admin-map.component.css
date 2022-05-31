@@ -119,3 +119,50 @@ mat-card{
     font-size: x-large;
     text-align: center;
   }
+
+  @media screen and (max-width:600px) {
+    #map{
+      height: 70vh;
+      width: 75vh;
+      margin: auto;
+      margin-top: 1%;
+      border: 2px;
+      border-style: double;
+  }
+
+  .map {
+      height: 70vh;
+      width: 75vh;
+      margin: auto;
+      margin-top: 1%;
+      border: 2px;
+      border-style: double;
+}
+
+#users {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 85%;
+  background-color: rgb(218, 243, 255);
+  margin-left: 5%;
+  
+}
+
+#users td, #users th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+ 
+.Search {
+  width: 35%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid rgba(255, 252, 252, 0.575);
+  height: 30%;
+  margin-left: 33%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: rgb(206, 211, 211);
+}
+
+}

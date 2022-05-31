@@ -13,3 +13,25 @@ p{
     padding: auto;
     font-size: 50px;
 }
+
+@media screen and (max-width:600px) {
+    video{
+        width: 445px;
+    }
+
+    .space{
+        margin-top: 6%;
+        margin-bottom: 5%;
+        margin-left: 10%;
+        margin-right: 4%;
+        height: 40%;
+        width:74%;
+        text-align: center;
+    }
+
+    p{
+        padding: auto;
+        font-size: 40px;
+    }
+    
+}
