@@ -8,6 +8,7 @@ import { Location } from '../services/location.model'
 import { User } from '../services/user.model';
 import { Confirmed } from '../services/confirmed.model';
 import { async } from '@firebase/util';
+import { Router } from '@angular/router';
 
 
 declare const L: any;
@@ -35,7 +36,7 @@ export class AdminMapComponent implements OnInit {
   cb:any;
   Confirmed: Confirmed[]
     constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private authService: AuthService,
-      private renderer:Renderer2, private el:ElementRef) {
+      private router: Router) {
     this.user = null;
 
   }
@@ -328,8 +329,11 @@ export class AdminMapComponent implements OnInit {
          // alert('ay mag save kana hahaha')
       } 
   
-  
-}
+      goToPart(fragment:any){
+        this.router.navigateByUrl('admin-map#' + fragment)
+      }
+  }
+
 
 /*const getLocationData = async (afs: any) => {
 

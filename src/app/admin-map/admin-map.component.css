@@ -1,150 +1,64 @@
 .map {
-    height: 85vh;
-    width: 200vh;
-    margin: auto;
-    margin-top: 1%;
-    border: 2px;
-    border-style: double;
+  height: 73vh;
+  width: 200vh;
+  margin-left: 1%;
+  border: 2px;
+  border-style: double;
+  margin-bottom: 3%;
+}
+
+a{
+text-decoration: none;
+}
+
+.sec{
+margin-left: 85%;
+margin-bottom: 38%;
+margin-top: -40%;
+
 }
 
 .cen1{
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
 }
 .cen{
-    
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
+  
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
 }
 mat-card{
-    height: 35%;
-    margin-top: 11%;
-    margin-left: 5%;
-    margin-right: 5%;
+  height: 35%;
+  margin-top: 11%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .isize{
-    height:60px;
-    width: 70px;
-    padding-left: 49%;
-    padding-top: 1%;
-    margin-top: -10%;
-    margin-bottom: -2%;
+  height:60px;
+  width: 70px;
+  padding-left: 49%;
+  padding-top: 1%;
+  margin-top: -10%;
+  margin-bottom: -2%;
 
 }
 
+.p{
+font-size: 40px;
+margin-left: 1%;
+margin-bottom: 1%;
 
-  #users1 {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 85%;
-    background-color: rgb(218, 243, 255);
-    margin-left: 8%;
-    
-  }
-  
-  #users1 td, #users1 th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #users1 tr:nth-child(even){background-color: #f4f1fd;}
-  
-  #users1 tr:hover {background-color: #ddd;}
-  
-  #users1 th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #04AA6D;
-    color: white;
-  }
-
-  #users {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 85%;
-    background-color: rgb(218, 243, 255);
-    margin-left: 8%;
-    
-  }
-  
-  #users td, #users th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #users tr:nth-child(even){background-color: #f4f1fd;}
-  
-  #users tr:hover {background-color: #ddd;}
-  
-  #users th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #04AA6D;
-    color: white;
-  }
-
-
-  .Search {
-    width: 35%;
-    font-size: 18px;
-    padding: 11px;
-    border: 1px solid rgba(255, 252, 252, 0.575);
-    height: 30%;
-    margin-left: 35%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    background-color: rgb(206, 211, 211);
-  }
-
-  .button1 {
-    transition-duration: 0.4s;
-    padding: 4px 8px;
-    border-radius: 3px;
-    font-size: 15px;
-    margin-left: 1%;
-    
-  }
-  
-  .button1:hover {
-    background-color: #4CAF50; /* Green */
-    color: white;
-  }
-  
-  p {
-    font-size: x-large;
-    text-align: center;
-  }
-
-  @media screen and (max-width:600px) {
-    #map{
-      height: 70vh;
-      width: 75vh;
-      margin: auto;
-      margin-top: 1%;
-      border: 2px;
-      border-style: double;
-  }
-
-  .map {
-      height: 70vh;
-      width: 75vh;
-      margin: auto;
-      margin-top: 1%;
-      border: 2px;
-      border-style: double;
 }
 
 #users {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 85%;
-  background-color: rgb(218, 243, 255);
-  margin-left: 5%;
+  background-color: #DADEF7;
+
   
 }
 
@@ -152,17 +66,131 @@ mat-card{
   border: 1px solid #ddd;
   padding: 8px;
 }
- 
+
+#users tr:nth-child(even){background-color: #f4f1fd;}
+
+#users tr:hover {background-color: #ddd;}
+
+#users th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #B0B9EE;
+  color: rgb(0, 0, 0);
+}
+
+
 .Search {
-  width: 35%;
+  width: 65%;
   font-size: 18px;
   padding: 11px;
   border: 1px solid rgba(255, 252, 252, 0.575);
-  height: 30%;
-  margin-left: 33%;
+  height: 5%;
+  margin-left: 2%;
   margin-top: 2%;
-  margin-bottom: 2%;
+  
+  margin-bottom: 1%;
   background-color: rgb(206, 211, 211);
+}
+
+.button1 {
+  transition-duration: 0.4s;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 15px;
+  margin-left: 1%;
+  
+}
+
+.button1:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+p {
+  font-size: x-large;
+  text-align: center;
+}
+
+.pending{
+  display: block;
+}
+
+.tracked{
+  display: block;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.b{
+  margin-top: -5%;
+  padding: 17px 40px;
+  margin-bottom: 2%;
+  font-size: 16px;
+  margin-left: 8.5%;
+  background-color: red;
+  border: #ddd;
+  color: white;
+}
+
+.b:hover {background-color: #db0000;}
+
+.c{
+  font-size: 16px;
+  padding: 17px 41px;
+  margin-left: 1%;
+  background-color: #4CAF50;
+  border: #ddd;
+  color: white;
+}
+.c:hover {background-color: #63eb5e;}
+
+@media screen and (max-width:600px) {
+  #map{
+    height: 70vh;
+    width: 75vh;
+    margin: auto;
+    margin-top: 1%;
+    border: 2px;
+    border-style: double;
+}
+
+.map {
+    height: 70vh;
+    width: 75vh;
+    margin: auto;
+    margin-top: 1%;
+    border: 2px;
+    border-style: double;
+}
+
+#users {
+font-family: Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 85%;
+background-color: rgb(218, 243, 255);
+margin-left: 5%;
+
+}
+
+#users td, #users th {
+border: 1px solid #ddd;
+padding: 8px;
+}
+
+.Search {
+width: 35%;
+font-size: 18px;
+padding: 11px;
+border: 1px solid rgba(255, 252, 252, 0.575);
+height: 30%;
+margin-left: 33%;
+margin-top: 2%;
+margin-bottom: 2%;
+background-color: rgb(206, 211, 211);
 }
 
 }

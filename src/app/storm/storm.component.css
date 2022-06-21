@@ -1,12 +1,11 @@
 .space{
-    margin-top: 6%;
+    margin-top: 2%;
     margin-bottom: 5%;
     margin-left: 12%;
     margin-right: 4%;
     height: 40%;
     width:74%;
     text-align: center;
-   
 }
 
 p{
@@ -27,11 +26,6 @@ p{
         height: 40%;
         width:74%;
         text-align: center;
-    }
-    
-    p{
-        padding: auto;
-        font-size: 40px;
     }
     
 }

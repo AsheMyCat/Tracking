@@ -77,11 +77,12 @@ mat-toolbar{
 
 @media screen and (max-width:600px) {
     .clr{
-        width: 100%;
+        width: 100% !important;
+        
     }
 
     mat-toolbar{
-        width: 100%;
+        width: 100% !important;
     }
     
 }

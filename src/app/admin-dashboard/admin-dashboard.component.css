@@ -1,43 +1,81 @@
 .c1{
-    height: 35%;
-    margin-top: 11%;
-    margin-left: 5%;
-    margin-right: 5%;
+  height: 35%;
+  margin-top: 11%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .isize{
-    height:60px;
-    width: 70px;
-    padding-left: 49%;
-    padding-top: 1%;
-    margin-top: -10%;
-    margin-bottom: -2%;
+  height:60px;
+  width: 70px;
+  padding-left: 49%;
+  padding-top: 1%;
+  margin-top: -10%;
+  margin-bottom: -2%;
 
 }
 .cen1{
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
 }
 .cen{
-    
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
+  
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 #users {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  background-color: #DADEF7;
+  margin-left: 5%;
+  
+}
+
+#users td, #users th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#users tr:nth-child(even){background-color: #f4f1fd;}
+
+#users tr:hover {background-color: #ddd;}
+
+#users th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #B0B9EE;
+  color: rgb(0, 0, 0);
+}
+
+.mySearch {
+  width: 89%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid #ddd;
+  height: 30%;
+  margin-left: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: #E4DAF7;
+}
+@media screen and (max-width:600px) {
+  #users {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 90%;
+    width: 50%;
     background-color: rgb(218, 243, 255);
     margin-left: 5%;
-    
+   
   }
   
   #users td, #users th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 1px;
   }
   
   #users tr:nth-child(even){background-color: #f4f1fd;}
@@ -45,8 +83,8 @@
   #users tr:hover {background-color: #ddd;}
   
   #users th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 1px;
+    padding-bottom: 1px;
     text-align: center;
     background-color: #04AA6D;
     color: white;
@@ -63,42 +101,4 @@
     margin-bottom: 2%;
     background-color: rgb(206, 211, 211);
   }
-  @media screen and (max-width:600px) {
-    #users {
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 50%;
-      background-color: rgb(218, 243, 255);
-      margin-left: 5%;
-     
-    }
-    
-    #users td, #users th {
-      border: 1px solid #ddd;
-      padding: 1px;
-    }
-    
-    #users tr:nth-child(even){background-color: #f4f1fd;}
-    
-    #users tr:hover {background-color: #ddd;}
-    
-    #users th {
-      padding-top: 1px;
-      padding-bottom: 1px;
-      text-align: center;
-      background-color: #04AA6D;
-      color: white;
-    }
-  
-    .mySearch {
-      width: 40%;
-      font-size: 18px;
-      padding: 11px;
-      border: 1px solid #ddd;
-      height: 30%;
-      margin-left: 28%;
-      margin-top: 2%;
-      margin-bottom: 2%;
-      background-color: rgb(206, 211, 211);
-    }
-  }
+}
