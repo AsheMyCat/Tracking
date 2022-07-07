@@ -49,13 +49,3 @@ mat-list-item{
     font-size: 22px;
 }
 
-@media screen and (max-width:600px) {
-    .card {
-        width: 80%;
-        height:122%;
-        margin-left: 10%;
-        margin-top: 5%;
-        margin-bottom: 2%;
-    }
-    
-}
